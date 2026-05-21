@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* ============================================================
+   6시점 — 청문회·증언석 시각언어
+   진중한 미색 위에 짙은 남색 잉크, 단 하나의 빨간 액센트.
+   다크 대시보드·네온·그라데이션 일절 없음. 정부 정책 도구.
+   ============================================================ */
+
+:root {
+  --paper: #f8f4e9;
+  --paper-dark: #ece3cc;
+  --paper-deep: #e3d8ba;
+  --navy: #1a2a4a;
+  --navy-soft: #2e3f63;
+  --red: #a93030;
+  --red-deep: #8a2424;
+  --ink: #2b2b2b;
+  --muted: #6b6655;
+  --hairline: rgba(26, 42, 74, 0.16);
+  --hairline-strong: rgba(26, 42, 74, 0.32);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-dark: var(--paper-dark);
+  --color-paper-deep: var(--paper-deep);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-serif: var(--font-serif-kr), "Noto Serif KR", serif;
+  --font-sans: var(--font-sans-kr), "Noto Sans KR", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* 종이 결 — 아주 미세한 노이즈로 청문회 회의록의 질감 */
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(26, 42, 74, 0.035) 0, transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(169, 48, 48, 0.03) 0, transparent 38%);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+::selection {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+/* ===== 스크롤바 — 청문회 톤 ===== */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy-soft);
+  border: 3px solid var(--paper-dark);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy);
+}
+
+/* ===== 포커스 — 접근성 ===== */
+:focus-visible {
+  outline: 2.5px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   애니메이션 — 절제. 증언이 "기록되는" 느낌.
+   ============================================================ */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) rotate(-9deg);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-9deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-9deg);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.78);
+  }
+}
+
+.anim-rise {
+  animation: riseIn 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.anim-fade {
+  animation: fadeIn 0.5s ease both;
+}
+.anim-stamp {
+  animation: stampIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* 라이브 점멸 — 데모 진행 표시 */
+.live-dot {
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   재사용 구성요소 클래스
+   ============================================================ */
+
+/* 청문회 패널 — 회의 문서의 카드 */
+.hearing-panel {
+  background: #fffdf6;
+  border: 1px solid var(--hairline-strong);
+  box-shadow:
+    0 1px 0 rgba(26, 42, 74, 0.04),
+    0 14px 34px -22px rgba(26, 42, 74, 0.42);
+}
+
+/* 명패 음각 텍스트 효과 */
+.engraved {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.22),
+    0 -1px 1px rgba(0, 0, 0, 0.32);
+}
+
+/* 회의록 행간 점선 */
+.dotted-rule {
+  background-image: linear-gradient(
+    to right,
+    var(--hairline) 0 4px,
+    transparent 4px 8px
+  );
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}

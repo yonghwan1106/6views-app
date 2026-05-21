@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "datasetName": "NEIS 학사일정 Open API",
+    "source": "교육부 NEIS (https://open.neis.go.kr/)",
+    "url": "https://www.data.go.kr/data/15137088/openapi.do",
+    "datasetId": "15137088",
+    "updateCycle": "실시간 API (매 학기 학교별 갱신)",
+    "lastUpdated": "2025-03-02",
+    "apiEndpoint": "https://open.neis.go.kr/hub/SchoolSchedule",
+    "note": "전국 초·중·고 학사일정 Open API 응답 샘플. 수업일수·방학·늘봄 프로그램 일정 분석에 활용."
+  },
+  "api_schema": {
+    "request_params": {
+      "KEY": "API 인증키",
+      "Type": "json",
+      "ATPT_OFCDC_SC_CODE": "시도교육청코드 (예: B10=서울)",
+      "SD_SCHUL_CODE": "학교코드",
+      "AA_YMD": "학사일자 (YYYYMMDD 또는 범위)"
+    },
+    "response_fields": {
+      "ATPT_OFCDC_SC_CODE": "시도교육청코드",
+      "SD_SCHUL_CODE": "표준학교코드",
+      "SCHUL_NM": "학교명",
+      "AY": "학년도",
+      "MMEAL_SC_CODE": "월",
+      "DGHT_CRSE_SC_NM": "주야과정명",
+      "SCHUL_CRSE_SC_NM": "학교과정명",
+      "AA_YMD": "학사일자",
+      "EVENT_NM": "행사명",
+      "ONE_GRADE_EVENT_YN": "1학년행사여부"
+    }
+  },
+  "sample_records": [
+    {
+      "ATPT_OFCDC_SC_CODE": "B10",
+      "ATPT_OFCDC_SC_NM": "서울특별시교육청",
+      "SD_SCHUL_CODE": "7010001",
+      "SCHUL_NM": "서울남산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250303",
+      "EVENT_NM": "개학일 (1학기)",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "B10",
+      "ATPT_OFCDC_SC_NM": "서울특별시교육청",
+      "SD_SCHUL_CODE": "7010001",
+      "SCHUL_NM": "서울남산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250304",
+      "EVENT_NM": "수업일",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "B10",
+      "ATPT_OFCDC_SC_NM": "서울특별시교육청",
+      "SD_SCHUL_CODE": "7010001",
+      "SCHUL_NM": "서울남산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250718",
+      "EVENT_NM": "여름방학 시작",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 방학 중 운영"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "B10",
+      "ATPT_OFCDC_SC_NM": "서울특별시교육청",
+      "SD_SCHUL_CODE": "7010001",
+      "SCHUL_NM": "서울남산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250818",
+      "EVENT_NM": "여름방학 종료",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "G10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "4100101",
+      "SCHUL_NM": "경기수원영통중학교",
+      "AY": "2025",
+      "AA_YMD": "20250303",
+      "EVENT_NM": "개학일 (1학기)",
+      "SCHOOL_CRSE_SC_NM": "중학교",
+      "neulbom_status": "해당없음"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "G10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "4100101",
+      "SCHUL_NM": "경기수원영통중학교",
+      "AY": "2025",
+      "AA_YMD": "20251218",
+      "EVENT_NM": "2학기 종업식",
+      "SCHOOL_CRSE_SC_NM": "중학교",
+      "neulbom_status": "해당없음"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "F10",
+      "ATPT_OFCDC_SC_NM": "광주광역시교육청",
+      "SD_SCHUL_CODE": "5100055",
+      "SCHUL_NM": "광주북구양산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250303",
+      "EVENT_NM": "개학일 (1학기)",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "F10",
+      "ATPT_OFCDC_SC_NM": "광주광역시교육청",
+      "SD_SCHUL_CODE": "5100055",
+      "SCHUL_NM": "광주북구양산초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250115",
+      "EVENT_NM": "겨울방학 종료",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 방학 중 운영"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "전라남도교육청",
+      "SD_SCHUL_CODE": "4800055",
+      "SCHUL_NM": "전남고흥남초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250303",
+      "EVENT_NM": "개학일 (1학기)",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일"
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "전라남도교육청",
+      "SD_SCHUL_CODE": "4800055",
+      "SCHUL_NM": "전남고흥남초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250710",
+      "EVENT_NM": "여름방학 시작",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 방학 중 운영 (지역아동센터 연계)"
+    }
+  ],
+  "school_year_summary": {
+    "year": 2025,
+    "semester1_start": "20250303",
+    "semester1_end": "20250718",
+    "summer_vacation_start": "20250718",
+    "summer_vacation_end": "20250818",
+    "semester2_start": "20250819",
+    "semester2_end": "20251219",
+    "winter_vacation_start": "20251220",
+    "winter_vacation_end": "20260106",
+    "total_school_days_avg": 190,
+    "neulbom_operating_days_avg": 240,
+    "neulbom_vacation_operation_days": 50,
+    "neulbom_vacation_note": "방학 중 늘봄 운영일수 평균 50일 (하·동방학 합산). 맞벌이 가정 공백 해소 핵심 지표."
+  },
+  "neulbom_schedule_analysis": {
+    "neulbom_daily_start_time": "13:00",
+    "neulbom_daily_end_time": "20:00",
+    "neulbom_max_hours_per_day": 7,
+    "neulbom_avg_participation_hours": 3.8,
+    "care_gap_before_neulbom_hours": 2.5,
+    "care_gap_note": "늘봄 도입 전 하교 후 보호자 귀가까지 평균 2.5시간 공백. 늘봄 도입 후 0.4시간으로 축소(추정)."
+  },
+  "teacher_admin_schedule": {
+    "neis_input_avg_hours_per_week": 4.2,
+    "neis_input_note": "교사 1인당 NEIS 행정 입력 주 평균 4.2시간 소요 (KERIS 교사 행정업무 분석 2024 추정).",
+    "schedule_conflict_incidents_per_year": 1284,
+    "schedule_conflict_note": "전국 연간 학사일정 입력 오류·중복 발생 건수 추정. AI 자동화 도입 시 80% 절감 가능(추정)."
+  }
+}

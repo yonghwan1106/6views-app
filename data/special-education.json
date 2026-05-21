@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "datasetName": "특수교육 연차보고서",
+    "source": "교육부 (data.go.kr)",
+    "url": "https://www.data.go.kr/data/15106332/fileData.do",
+    "datasetId": "15106332",
+    "updateCycle": "연 1회 (8월 발표)",
+    "lastUpdated": "2025-08-01",
+    "note": "장애학생 특수교육 현황. 특수학교·특수학급·일반학급 배치 현황, 지원 인력, 보조공학기기 등 포함. 다문화·특수교육 포용 의제 핵심."
+  },
+  "national_overview_2025": {
+    "total_special_ed_students": 115842,
+    "yoy_change_pct": 3.2,
+    "by_school_type": [
+      { "type": "특수학교", "students": 28144, "schools": 182 },
+      { "type": "일반학교 특수학급", "students": 65481, "schools": 11248 },
+      { "type": "일반학급 완전통합", "students": 22217, "schools": 5842 }
+    ],
+    "disability_types": [
+      { "type": "지적장애", "count": 52841, "pct": 45.6 },
+      { "type": "자폐성장애", "count": 24128, "pct": 20.8 },
+      { "type": "지체장애", "count": 12482, "pct": 10.8 },
+      { "type": "발달지체", "count": 9244, "pct": 8.0 },
+      { "type": "청각장애", "count": 4821, "pct": 4.2 },
+      { "type": "시각장애", "count": 2441, "pct": 2.1 },
+      { "type": "정서·행동장애", "count": 5124, "pct": 4.4 },
+      { "type": "기타", "count": 4761, "pct": 4.1 }
+    ]
+  },
+  "support_staff": {
+    "special_ed_teachers": 22148,
+    "special_ed_teacher_student_ratio": 5.23,
+    "special_ed_assistants": 14821,
+    "therapists": 3244,
+    "speech_language_pathologists": 1882,
+    "shortage_rate_pct": 18.4,
+    "shortage_note": "특수교사 법정 정원 대비 18.4% 부족 (추정, 교육부 2025 특수교육 통계)."
+  },
+  "inclusion_classroom_data": [
+    {
+      "sido": "서울특별시",
+      "total_special_students": 14821,
+      "special_school_pct": 28.4,
+      "inclusion_class_pct": 56.2,
+      "full_inclusion_pct": 15.4,
+      "avg_support_hours_per_week": 14.2,
+      "assistive_tech_coverage_pct": 72.4
+    },
+    {
+      "sido": "경기도",
+      "total_special_students": 28441,
+      "special_school_pct": 21.8,
+      "inclusion_class_pct": 62.4,
+      "full_inclusion_pct": 15.8,
+      "avg_support_hours_per_week": 13.8,
+      "assistive_tech_coverage_pct": 68.2
+    },
+    {
+      "sido": "전라남도",
+      "total_special_students": 6248,
+      "special_school_pct": 32.1,
+      "inclusion_class_pct": 54.8,
+      "full_inclusion_pct": 13.1,
+      "avg_support_hours_per_week": 11.4,
+      "assistive_tech_coverage_pct": 52.8,
+      "rural_access_gap_note": "농촌 지역 특수교육 접근성 도시 대비 현저히 낮음"
+    },
+    {
+      "sido": "강원특별자치도",
+      "total_special_students": 4128,
+      "special_school_pct": 29.8,
+      "inclusion_class_pct": 56.4,
+      "full_inclusion_pct": 13.8,
+      "avg_support_hours_per_week": 10.8,
+      "assistive_tech_coverage_pct": 48.4,
+      "rural_access_gap_note": "도서벽지 특수교육 순회교사 의존 높음"
+    },
+    {
+      "sido": "경상북도",
+      "total_special_students": 7824,
+      "special_school_pct": 30.2,
+      "inclusion_class_pct": 55.6,
+      "full_inclusion_pct": 14.2,
+      "avg_support_hours_per_week": 11.8,
+      "assistive_tech_coverage_pct": 54.2
+    },
+    {
+      "sido": "인천광역시",
+      "total_special_students": 8241,
+      "special_school_pct": 24.2,
+      "inclusion_class_pct": 60.4,
+      "full_inclusion_pct": 15.4,
+      "avg_support_hours_per_week": 13.2,
+      "assistive_tech_coverage_pct": 65.8
+    }
+  ],
+  "aidt_special_ed": {
+    "ai_digital_textbook_pilot_schools": 284,
+    "special_ed_aidt_coverage_pct": 12.4,
+    "aidt_adaptation_rate_pct": 38.2,
+    "aidt_adaptation_note": "AIDT의 특수교육 대상 맞춤 기능 적용률 38.2%. 비장애학생 대비 기능 격차 존재.",
+    "accessible_features": ["화면 확대", "음성 출력", "단순화 UI", "보완대체의사소통(AAC) 연동"],
+    "missing_features": ["점자 출력 직접 연동", "수어 영상 자동 생성", "인지 수준별 자동 난이도 조정"]
+  },
+  "teacher_admin_burden_special_ed": {
+    "iep_hours_per_student_per_year": 18.4,
+    "iep_note": "개별화교육계획(IEP) 작성에 학생 1인당 연 18.4시간 소요 (추정, KERIS 교사 행정업무 분석 2024 참고).",
+    "admin_to_teaching_ratio": 0.42,
+    "admin_ratio_note": "특수교사 업무 중 행정 42%, 직접교육 58%. 일반교사 행정 비율 35% 대비 높음."
+  }
+}

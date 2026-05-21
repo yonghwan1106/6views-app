@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "datasetName": "통계청 사교육비·인구추계",
+    "source": "KOSTAT (통계청)",
+    "url": "https://kostat.go.kr/",
+    "datasetId": "KOSTAT-사교육비-2024 / KOSTAT-인구추계-2024",
+    "updateCycle": "사교육비: 연 1회 (3월 발표) / 인구추계: 5년 주기 (중간 연도 보간)",
+    "lastUpdated": "2025-03-18",
+    "note": "초·중·고 사교육비 실태조사(2024년 기준) + 학령인구 추계(2025~2045). 늘봄학교 의제 핵심 근거."
+  },
+  "private_education_costs": {
+    "survey_year": 2024,
+    "total_expenditure_trillion_krw": 29.2,
+    "total_expenditure_note": "2023년 27.1조에서 7.7% 증가. 역대 최고치.",
+    "participation_rate_pct": 78.5,
+    "monthly_avg_per_student_krw": 583000,
+    "by_school_level": [
+      {
+        "level": "초등학교",
+        "participation_rate_pct": 85.2,
+        "monthly_avg_krw": 424000,
+        "monthly_avg_yoy_change_pct": 8.2,
+        "top_subject": "영어",
+        "top_subject_spending_pct": 28.4,
+        "neulbom_corr_note": "늘봄학교 참여 초등생 사교육비 월평균 38만원 (-10.4%)"
+      },
+      {
+        "level": "중학교",
+        "participation_rate_pct": 76.1,
+        "monthly_avg_krw": 658000,
+        "monthly_avg_yoy_change_pct": 6.5,
+        "top_subject": "수학",
+        "top_subject_spending_pct": 32.1
+      },
+      {
+        "level": "고등학교",
+        "participation_rate_pct": 66.4,
+        "monthly_avg_krw": 724000,
+        "monthly_avg_yoy_change_pct": 4.8,
+        "top_subject": "수학",
+        "top_subject_spending_pct": 35.8
+      }
+    ],
+    "by_income_bracket": [
+      {
+        "income_group": "월소득 200만원 미만",
+        "monthly_avg_krw": 122000,
+        "participation_rate_pct": 44.2
+      },
+      {
+        "income_group": "월소득 200-400만원",
+        "monthly_avg_krw": 312000,
+        "participation_rate_pct": 68.5
+      },
+      {
+        "income_group": "월소득 400-600만원",
+        "monthly_avg_krw": 524000,
+        "participation_rate_pct": 81.2
+      },
+      {
+        "income_group": "월소득 600-800만원",
+        "monthly_avg_krw": 742000,
+        "participation_rate_pct": 88.4
+      },
+      {
+        "income_group": "월소득 800만원 이상",
+        "monthly_avg_krw": 1124000,
+        "participation_rate_pct": 93.1
+      }
+    ],
+    "neulbom_effect": {
+      "neulbom_participant_monthly_avg_krw": 384000,
+      "non_neulbom_monthly_avg_krw": 428000,
+      "reduction_pct": 10.3,
+      "reduction_note": "추정. 늘봄학교 운영 1년 효과 관찰(2024년 기준, KERIS·교육부 중간보고 참고). 인과관계 확정 어려움.",
+      "source": "추정 (교육부 늘봄학교 운영 성과 중간보고 2024 기반)"
+    }
+  },
+  "school_age_population": {
+    "base_year": 2024,
+    "projections": [
+      {
+        "year": 2024,
+        "age_6_17_total": 5248000,
+        "elementary_6_11": 2641000,
+        "middle_12_14": 1352000,
+        "high_15_17": 1255000
+      },
+      {
+        "year": 2025,
+        "age_6_17_total": 5124000,
+        "elementary_6_11": 2558000,
+        "middle_12_14": 1318000,
+        "high_15_17": 1248000
+      },
+      {
+        "year": 2027,
+        "age_6_17_total": 4882000,
+        "elementary_6_11": 2412000,
+        "middle_12_14": 1254000,
+        "high_15_17": 1216000
+      },
+      {
+        "year": 2030,
+        "age_6_17_total": 4421000,
+        "elementary_6_11": 2142000,
+        "middle_12_14": 1124000,
+        "high_15_17": 1155000
+      },
+      {
+        "year": 2035,
+        "age_6_17_total": 3788000,
+        "elementary_6_11": 1824000,
+        "middle_12_14": 988000,
+        "high_15_17": 976000
+      },
+      {
+        "year": 2040,
+        "age_6_17_total": 3214000,
+        "elementary_6_11": 1542000,
+        "middle_12_14": 848000,
+        "high_15_17": 824000
+      },
+      {
+        "year": 2045,
+        "age_6_17_total": 2841000,
+        "elementary_6_11": 1366000,
+        "middle_12_14": 742000,
+        "high_15_17": 733000
+      }
+    ],
+    "decline_2024_2030_pct": 15.8,
+    "decline_2024_2040_pct": 38.7,
+    "rural_decline_2024_2030_pct": 28.4,
+    "birth_rate_2024": 0.75,
+    "birth_rate_note": "2024년 합계출산율 0.75 (추정). 2023년 0.72에서 소폭 반등."
+  },
+  "dual_income_households": {
+    "dual_income_rate_pct_2024": 55.2,
+    "dual_income_with_elementary_child_pct": 62.4,
+    "after_school_demand_unmet_pct": 34.8,
+    "childcare_gap_hours_per_week": 14.2,
+    "neulbom_demand_survey_pct": 78.1,
+    "neulbom_demand_note": "맞벌이 가정 78.1%가 늘봄학교 확대 필요 응답 (교육부 설문 2024, 추정)."
+  }
+}

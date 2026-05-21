@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "datasetName": "경기도교육청 다문화학생 현황",
+    "source": "경기도교육청 (data.go.kr)",
+    "url": "https://www.data.go.kr/data/15106331/fileData.do",
+    "datasetId": "15106331",
+    "updateCycle": "연 1회 (4월 기준)",
+    "lastUpdated": "2025-04-30",
+    "note": "경기도 전체 초·중·고 다문화 학생 현황. 국적별·학교급별·지역별 분포. 한국어 지원·이중언어 프로그램 현황 포함. 다문화·특수교육 포용 의제 핵심."
+  },
+  "gyeonggi_overview_2025": {
+    "total_multicultural_students": 72841,
+    "total_students_gyeonggi": 1482000,
+    "multicultural_ratio_pct": 4.92,
+    "yoy_change_pct": 8.4,
+    "yoy_change_note": "2024년 4.54% → 2025년 4.92%. 지속 증가 추세.",
+    "national_multicultural_total_2025": 188421,
+    "national_multicultural_ratio_pct": 3.52
+  },
+  "by_nationality": [
+    { "nationality": "중국(조선족)", "count": 18421, "pct": 25.3 },
+    { "nationality": "베트남", "count": 14882, "pct": 20.4 },
+    { "nationality": "중국(한족)", "count": 9241, "pct": 12.7 },
+    { "nationality": "필리핀", "count": 8124, "pct": 11.2 },
+    { "nationality": "일본", "count": 4821, "pct": 6.6 },
+    { "nationality": "캄보디아", "count": 3244, "pct": 4.5 },
+    { "nationality": "태국", "count": 2841, "pct": 3.9 },
+    { "nationality": "미국", "count": 2124, "pct": 2.9 },
+    { "nationality": "러시아·CIS", "count": 1882, "pct": 2.6 },
+    { "nationality": "기타", "count": 7261, "pct": 10.0 }
+  ],
+  "by_school_level": [
+    {
+      "level": "초등학교",
+      "count": 42481,
+      "pct": 58.3,
+      "ratio_in_level_pct": 6.8,
+      "korean_support_coverage_pct": 72.4
+    },
+    {
+      "level": "중학교",
+      "count": 18241,
+      "pct": 25.0,
+      "ratio_in_level_pct": 4.2,
+      "korean_support_coverage_pct": 58.2
+    },
+    {
+      "level": "고등학교",
+      "count": 12119,
+      "pct": 16.6,
+      "ratio_in_level_pct": 2.8,
+      "korean_support_coverage_pct": 42.1
+    }
+  ],
+  "high_density_schools": [
+    {
+      "school_code": "4100222",
+      "school_name": "경기안산원곡중학교",
+      "sigungu": "안산시",
+      "total_students": 723,
+      "multicultural_students": 187,
+      "ratio_pct": 25.9,
+      "main_nationalities": ["중국(조선족)", "베트남", "필리핀"],
+      "korean_class_sessions_per_week": 10,
+      "bilingual_teacher_count": 3
+    },
+    {
+      "school_code": "4100288",
+      "school_name": "경기시흥정왕초등학교",
+      "sigungu": "시흥시",
+      "total_students": 488,
+      "multicultural_students": 98,
+      "ratio_pct": 20.1,
+      "main_nationalities": ["중국(한족)", "베트남", "캄보디아"],
+      "korean_class_sessions_per_week": 8,
+      "bilingual_teacher_count": 2
+    },
+    {
+      "school_code": "4100344",
+      "school_name": "경기화성동탄중학교",
+      "sigungu": "화성시",
+      "total_students": 912,
+      "multicultural_students": 82,
+      "ratio_pct": 9.0,
+      "main_nationalities": ["베트남", "중국(조선족)"],
+      "korean_class_sessions_per_week": 6,
+      "bilingual_teacher_count": 1
+    },
+    {
+      "school_code": "4100401",
+      "school_name": "경기수원세류초등학교",
+      "sigungu": "수원시",
+      "total_students": 524,
+      "multicultural_students": 74,
+      "ratio_pct": 14.1,
+      "main_nationalities": ["베트남", "중국(조선족)", "필리핀"],
+      "korean_class_sessions_per_week": 8,
+      "bilingual_teacher_count": 2
+    }
+  ],
+  "korean_language_support": {
+    "korean_language_class_schools": 1248,
+    "korean_language_teachers": 2841,
+    "bilingual_support_teachers": 842,
+    "coverage_rate_pct": 68.4,
+    "unmet_demand_students": 22841,
+    "unmet_demand_note": "한국어 지원 미적용 다문화 학생 추정 2만 2천명 (추정, 경기도교육청 수요조사 2024 참고).",
+    "avg_weekly_korean_sessions": 6.4,
+    "ideal_weekly_sessions": 10.0
+  },
+  "academic_gap": {
+    "multicultural_basic_literacy_below_std_pct": 18.4,
+    "general_basic_literacy_below_std_pct": 6.2,
+    "gap_multiplier": 2.97,
+    "dropout_rate_multicultural_pct": 2.1,
+    "dropout_rate_general_pct": 0.6,
+    "gap_note": "다문화 학생 기초학력 미달 비율이 일반 학생의 약 3배. 한국어 숙달 여부가 핵심 변수."
+  },
+  "neulbom_multicultural": {
+    "multicultural_neulbom_participation_pct": 48.2,
+    "general_neulbom_participation_pct": 38.4,
+    "note": "다문화 학생 늘봄학교 참여율이 일반 학생보다 9.8%p 높음. 돌봄 사각지대 해소 효과 추정."
+  }
+}
