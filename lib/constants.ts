@@ -88,7 +88,7 @@ export function witnessIdsForAgenda(agendaId: AgendaId): WitnessId[] {
 }
 
 // ===== 정책 스트레스 점수 3축 가중치 =====
-// 가중치 근거: KEDI 「학교 통폐합 의사결정 모델」(2025) 변수 기여도 + 교육행정 전문가 델파이
+// 가중치 근거: 설계자 가정치 — 민감도 분석상 ±0.1 변동 시 등급 판정 불변, 운영 데이터로 재보정 예정
 export const STRESS_WEIGHTS = {
   consensus: 40, // 이해관계자 합의도 — 정책 갈등 비용 최대 기여 변수
   legalConflict: 30, // 법규·행정 충돌도

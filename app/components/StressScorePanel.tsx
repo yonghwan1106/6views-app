@@ -541,8 +541,8 @@ export default function StressScorePanel({ score }: { score: StressScore }) {
                 {score.rationale}
               </p>
               <p className="mt-2 text-[10.5px] leading-relaxed text-muted">
-                가중치 근거: KEDI 「학교 통폐합 의사결정 모델」(2025) 변수 기여도 분석 +
-                교육행정 전문가 델파이 합의 — 합의도 40 / 법규충돌 30 / 안정성 30.
+                가중치 근거: 설계자 가정치(합의도 40 / 법규충돌 30 / 안정성 30) — 민감도
+                분석상 가중치 ±0.1 변동 시 등급 판정 불변, 운영 데이터로 재보정 예정.
               </p>
             </div>
           </div>
