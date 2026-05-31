@@ -47,7 +47,8 @@
       "lat": 34.6388,
       "lng": 127.3102,
       "community_reaction": "반대",
-      "petition_count": 88
+      "petition_count": 88,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "6100088-OLD",
@@ -66,7 +67,8 @@
       "lat": 36.9342,
       "lng": 128.9127,
       "community_reaction": "조건부 동의",
-      "petition_count": 42
+      "petition_count": 42,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "5100088-OLD",
@@ -85,7 +87,8 @@
       "lat": 35.0722,
       "lng": 126.5189,
       "community_reaction": "동의",
-      "petition_count": 12
+      "petition_count": 12,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "4800344-OLD",
@@ -106,7 +109,8 @@
       "community_reaction": "강한반대",
       "petition_count": 215,
       "island_school": true,
-      "notes": "도서 지역. 통폐합 후 통학선 운항 비용 연 4,800만원 추가 발생."
+      "notes": "도서 지역. 통폐합 후 통학선 운항 비용 연 4,800만원 추가 발생.",
+      "derived_note": "community_reaction·petition_count·notes는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "3500022-OLD",
@@ -125,7 +129,8 @@
       "lat": 36.3841,
       "lng": 127.4122,
       "community_reaction": "혼재",
-      "petition_count": 0
+      "petition_count": 0,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "4600044-OLD",
@@ -144,7 +149,8 @@
       "lat": 36.8954,
       "lng": 126.6842,
       "community_reaction": "동의",
-      "petition_count": 8
+      "petition_count": 8,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "4800455-OLD",
@@ -163,7 +169,8 @@
       "lat": 34.6524,
       "lng": 126.9102,
       "community_reaction": "반대",
-      "petition_count": 95
+      "petition_count": 95,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     },
     {
       "closed_school_code": "8721039",
@@ -205,7 +212,8 @@
       "lat": 36.7388,
       "lng": 126.3512,
       "community_reaction": "조건부 동의",
-      "petition_count": 51
+      "petition_count": 51,
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터는 폐교명·소재지·재산현황만 제공, 지역사회 반응·청원수는 미제공."
     }
   ],
   "summary": {
@@ -225,7 +233,7 @@
       { "sido": "경상북도", "count": 729 },
       { "sido": "강원특별자치도", "count": 482 }
     ],
-    "community_opposition_rate_pct": 58.4,
+    "community_opposition_rate_pct": 50.0,
     "island_school_closure_ratio_pct": 12.3,
     "avg_last_students_at_closure": 18.4,
     "source": "전국폐교재산기본정보표준데이터 (시도교육청/지방교육재정알리미, 2024)",
