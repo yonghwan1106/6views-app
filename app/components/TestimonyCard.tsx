@@ -108,7 +108,7 @@ export default function TestimonyCard({
                 borderRadius: 2,
               }}
             >
-              증언 불가
+              일시 오류
             </span>
           ) : (
             <StanceBadge stance={testimony.stance} />
@@ -117,8 +117,8 @@ export default function TestimonyCard({
 
         {hasError ? (
           <p className="flex-1 text-[12.5px] leading-relaxed text-muted">
-            이 증언자의 진술을 채록하지 못했습니다. 인용 근거가 확보되지 않아
-            증언이 자동 차단되었습니다.
+            이 증언자의 진술을 일시적으로 불러오지 못했습니다. 잠시 후
+            청문회를 다시 개시해 주세요.
           </p>
         ) : (
           <>

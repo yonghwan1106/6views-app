@@ -611,7 +611,10 @@ export async function deriveCompromises(
   }
 
   try {
-    const message = await callWithFallback('claude-opus-4-7', 'claude-haiku-4-5', {
+    // 절충안 도출은 6 증언을 종합해 JSON 8건을 구조화하는 작업으로, Opus가 아닌
+    // Haiku로도 충분한 품질을 내며 응답이 크게 빨라 라이브 데모 총 소요시간을
+    // 단축한다(속도 개선). 증언(핵심4 Opus)의 분석 깊이는 그대로 유지된다.
+    const message = await callWithFallback('claude-haiku-4-5', 'claude-haiku-4-5', {
       // max_tokens 3072 — 절충안 8건 JSON(각 100~200자 설명 + witnesses 배열)은
       // 1200 토큰을 초과해 응답이 잘리고(truncate) JSON.parse가 실패하던 문제 수정.
       // truncate 시 닫는 괄호가 사라져 전체가 mock 폴백되던 원인.
