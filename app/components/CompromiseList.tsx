@@ -9,6 +9,7 @@ import {
   CrossIcon,
   FEASIBILITY_LABEL,
   FEASIBILITY_TONE,
+  renderRichText,
 } from "./ui";
 
 function CompromiseRow({
@@ -75,7 +76,7 @@ function CompromiseRow({
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-start justify-between gap-2">
           <h3 className="font-serif text-[15px] font-700 leading-snug text-navy">
-            {item.title}
+            {renderRichText(item.title)}
           </h3>
           {/* 법규 통과 표식 */}
           <span
@@ -102,7 +103,7 @@ function CompromiseRow({
         </div>
 
         <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink/85">
-          {item.description}
+          {renderRichText(item.description)}
         </p>
 
         {item.legalNote && (

@@ -4,7 +4,7 @@
 // 청문회 증언석 메타포의 핵심 컴포넌트.
 import type { Testimony } from "@/lib/types";
 import { WITNESS_META } from "@/lib/constants";
-import { MicIcon, DocIcon, QuoteMark, StanceBadge } from "./ui";
+import { MicIcon, DocIcon, QuoteMark, StanceBadge, renderRichText } from "./ui";
 
 export default function TestimonyCard({
   testimony,
@@ -142,10 +142,10 @@ export default function TestimonyCard({
                           paddingBottom: 1,
                         }}
                       >
-                        {seg.text}
+                        {renderRichText(seg.text)}
                       </span>
                     ) : (
-                      seg.text
+                      renderRichText(seg.text)
                     )}
                   </p>
                 ))}

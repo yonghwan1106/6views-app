@@ -439,3 +439,26 @@ export function CornerTicks({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+/* ============================================================
+   인라인 마크다운 정제 — LLM(증언·절충안) 출력에 섞여 나오는
+   **볼드** 표기를 실제 <strong>으로 변환하고, 짝이 맞지 않는
+   별표는 제거한다. 화면에 '**'가 날것으로 노출되는 것을 막는다.
+   ============================================================ */
+
+export function renderRichText(text: string): ReactNode {
+  if (!text) return text;
+  const parts = text.split(/(\*\*[^*\n]+?\*\*)/g);
+  return parts.map((part, i) => {
+    const m = /^\*\*([^*\n]+?)\*\*$/.exec(part);
+    if (m) {
+      return (
+        <strong key={i} className="font-700 text-navy">
+          {m[1]}
+        </strong>
+      );
+    }
+    // 짝이 맞지 않아 남은 별표는 제거
+    return part.includes("*") ? part.replace(/\*+/g, "") : part;
+  });
+}

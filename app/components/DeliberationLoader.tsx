@@ -22,6 +22,7 @@ export default function DeliberationLoader({
   const witnessIds = witnessIdsForAgenda(agendaId);
   const [phase, setPhase] = useState(0);
   const [seated, setSeated] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
 
   useEffect(() => {
     // 증언자 착석 연출
@@ -32,11 +33,20 @@ export default function DeliberationLoader({
     const phaseTimer = setInterval(() => {
       setPhase((p) => (p < PHASES.length - 1 ? p + 1 : p));
     }, 1900);
+    // 경과 시간 — 마지막 단계 도달 후에도 '살아있음'을 보여주는 카운터
+    const elapsedTimer = setInterval(() => {
+      setElapsed((e) => e + 1);
+    }, 1000);
     return () => {
       clearInterval(seatTimer);
       clearInterval(phaseTimer);
+      clearInterval(elapsedTimer);
     };
   }, [witnessIds.length]);
+
+  // 막대가 4단계(100%)에 도달한 뒤에도 실제 LLM 증언 생성은 수십 초 더 걸린다.
+  // 이 구간에서 막대가 멈춘 듯 보이지 않도록 펄스·경과초·안내로 진행감을 유지한다.
+  const isFinalizing = phase >= PHASES.length - 1;
 
   return (
     <section
@@ -114,10 +124,10 @@ export default function DeliberationLoader({
       <div className="mt-9 w-full max-w-[440px]">
         <div className="mb-2.5 flex items-center justify-between">
           <span className="font-sans text-[12.5px] font-500 text-navy">
-            {PHASES[phase]}
+            {isFinalizing ? "6인의 증언을 종합·검증하는 중" : PHASES[phase]}
           </span>
           <span className="font-sans text-[11px] font-700 tabular-nums text-muted">
-            {phase + 1} / {PHASES.length}
+            {isFinalizing ? `${elapsed}초 경과` : `${phase + 1} / ${PHASES.length}`}
           </span>
         </div>
         {/* 진행 막대 — 측정 게이지 톤 */}
@@ -126,7 +136,7 @@ export default function DeliberationLoader({
           style={{ background: "#e3d8ba", borderRadius: 1 }}
         >
           <div
-            className="absolute left-0 top-0 h-full transition-all duration-700 ease-out"
+            className={`absolute left-0 top-0 h-full transition-all duration-700 ease-out ${isFinalizing ? "animate-pulse" : ""}`}
             style={{
               width: `${((phase + 1) / PHASES.length) * 100}%`,
               background: "#a93030",
@@ -140,7 +150,9 @@ export default function DeliberationLoader({
           </div>
         </div>
         <p className="mt-3 text-[11px] leading-relaxed text-muted">
-          모든 증언은 Anthropic Citations API로 출처를 검증하며, 인용 없는 진술은 자동 차단됩니다.
+          {isFinalizing
+            ? "실시간 AI 증언 생성으로 보통 20~50초가 소요됩니다. 화면을 닫지 말고 잠시만 기다려 주세요."
+            : "모든 증언은 Anthropic Citations API로 출처를 검증하며, 인용 없는 진술은 자동 차단됩니다."}
         </p>
       </div>
     </section>
