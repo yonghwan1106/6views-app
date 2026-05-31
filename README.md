@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 6시점 (6-View Policy Stress Test)
 
-## Getting Started
+> 교육 정책 주장 하나를 입력하면, 6명의 이해관계자가 **공공데이터를 근거로 동시에 증언**하고
+> 이를 **정책 스트레스 점수(PSS)** 와 **8개 절충안**으로 종합하는 교육정책 공개 청문회 시뮬레이터.
 
-First, run the development server:
+제8회 교육 공공데이터 AI활용대회 출품작 (일반부). Next.js(App Router) 기반 라이브 웹앱이며,
+본선 공개검증에서 심사위원이 직접 주장을 입력해 결과를 재현할 수 있도록 설계했다.
+
+---
+
+## 무엇을 하는 앱인가
+
+1. **의제 선택** — 5대 교육정책 의제(학교 통폐합 / 늘봄학교 / 기초학력·AIDT / 교원 행정 / 다문화·특수교육) 중 하나를 고른다.
+2. **주장 진술** — 검증하고 싶은 정책 주장 한 문장을 입력한다.
+3. **6 증언** — 핵심 4(학생·학부모·교사·교육청) + 의제별 동적 2, 총 6명의 이해관계자가
+   첨부된 공공데이터를 **인용(citation)** 하며 입장(찬성/반대/조건부)과 함께 증언한다.
+4. **정책 스트레스 점수(PSS)** — 합의도·법규충돌·정책안정성 3축 + 실측 갈등지표로 0~100점을 **결정론적으로** 산출한다.
+5. **8개 절충안** — 6 증언을 종합해 실현 가능성(high/medium/low)별 절충안 8건을 도출하고, 법규 규칙 필터로 통과 여부를 표기한다.
+
+> ⚠️ 본 앱은 **정책 결정을 대신하지 않는다.** PSS는 진단 도구이며, 결정 책임은 정책결정자에게 있다.
+
+---
+
+## 실제 구현된 기술 (현재 동작)
+
+| 영역 | 구현 내용 |
+|---|---|
+| **증언 생성** | Anthropic Claude API. 핵심 4 증언자는 Opus, 동적 2 증언자는 Haiku 모델 호출. 6명 **병렬**(`Promise.allSettled`) — 일부 실패해도 나머지 증언은 보존. |
+| **출처 인용** | **Anthropic Citations API**. 공공데이터를 `document` 블록으로 첨부하고 `citations.enabled`로 인용. 응답의 `cited_text`/`document_title`을 파싱해 증언에 근거를 붙인다. |
+| **RAG (문서 검색)** | **키워드 가중치 스코어링** 방식. 의제·주장 텍스트와 8종 공공데이터의 관련도를 점수화해 상위 문서를 선별한다. (벡터 임베딩이 아닌 규칙·가중치 기반 — 아래 로드맵 참조) |
+| **정책 스트레스 점수(PSS)** | **결정론적 계산**. 가중치(합의도 40 / 법규충돌 30 / 안정성 30) + 공공데이터에서 추출한 실측 갈등지표(`ConflictSignal`)로 산출. LLM 비결정성에 의존하지 않아 **같은 입력 → 같은 점수** 재현이 가능. |
+| **법규 규칙 필터** | 절충안에 대해 claim-aware **규칙 기반 필터**(`legal-rag`)로 법규·행정 충돌 여부를 표기. |
+| **공공데이터** | NEIS 학사일정 Open API 실수집 표본 + 교육부/통계청/시도교육청 공식 통계 8종(JSON). datasetId·출처·URL을 결과 화면에 그대로 공개. |
+| **프롬프트 인젝션 방어** | 사용자 주장(claim)을 정제(`sanitizeClaim`) 후에만 LLM에 전달. 증언자 역할 고정 지시로 주입 시도를 무력화. |
+| **모델 폴백** | Opus 호출이 레이트리밋/과부하/타임아웃/연결오류 시 Haiku로 자동 강등(`callWithFallback`). 라이브 데모 안정성 확보. |
+| **데모 모드** | `ANTHROPIC_API_KEY` 미설정 시 사전 준비된 예시 증언으로 시연(결과 상단에 "데모 모드" 고지). PSS·절충안 산출 로직은 실제와 동일. |
+| **레이트 리밋** | IP 기반 인메모리 일일 한도(데모 50건). ⚠️ 서버리스에서는 인스턴스별 분리로 전역 한도로는 부정확 — 코드 주석에 한계 명시. |
+
+### 데이터 출처 (전량 공개)
+
+전국 단위 수치는 공식 발표값, 개별 학교 레코드는 NEIS Open API 실수집,
+일부 파생지표(통학시간·반대청원수 등)는 **데모용 추정치**임을 화면·데이터에 표기한다.
+"누구나 동일 데이터로 100% 재현"이라는 식의 과장은 사용하지 않는다.
+
+- 학교알리미 학교별 공시정보 (KERIS)
+- 전국초중등학교위치표준데이터 / 전국학교학구도연계정보표준데이터 (교육부, data.go.kr)
+- 전국폐교재산기본정보표준데이터 (시도교육청/지방교육재정알리미, data.go.kr)
+- 초중고사교육비조사 (통계청 KOSIS)
+- 특수교육통계 / 다문화학생현황 (교육부·경기도교육청, data.go.kr)
+- NEIS 학사일정 Open API (교육부 NEIS)
+
+각 결과의 "증언 근거 공공데이터" 영역에서 데이터셋명·출처기관·data.go.kr 등록번호·원문 링크를 직접 확인할 수 있다.
+
+---
+
+## 확장 로드맵 (현재 미구현)
+
+아래 기능은 **아직 구현되지 않았다.** 코드·화면 어디에서도 "운영 중"으로 표시하지 않으며,
+계획 단계임을 명시한다.
+
+- **pgvector 기반 벡터 RAG** — 현재 RAG는 키워드 가중치 스코어링이다. 임베딩 색인(pgvector 등) 기반 의미 검색은 향후 과제다.
+- **Pol.is식 시민 합의 군집(PCA / K-means)** — "시민 합의도(7번째 시점)"는 베타 플레이스홀더이며 군집 분석은 미구현이다. 누적 참여자가 임계점에 도달하면 도입할 계획이다.
+- **Whisper 음성 입력** — 음성으로 주장을 진술하는 기능은 미구현이다.
+
+> PSS 3축 가중치(40/30/30)는 설계자 가정치 + 교육행정 도메인 검토에 기반하며,
+> 실제 운영 데이터가 축적되면 재보정(민감도 분석 첨부)할 예정이다.
+
+---
+
+## 실행 방법
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+빌드/배포:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 환경 변수
 
-## Learn More
+| 변수 | 설명 |
+|---|---|
+| `ANTHROPIC_API_KEY` | 설정 시 실제 Claude API로 6 증언 실시간 생성. **미설정 시 데모 모드**(사전 예시 증언)로 동작. |
 
-To learn more about Next.js, take a look at the following resources:
+> `.env.local`은 커밋하지 않는다. 제출물에는 실제 API 키를 포함하지 않는다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 아키텍처 개요
 
-## Deploy on Vercel
+```
+app/
+  page.tsx                  단일 페이지 청문회 UI (의제→주장→증언→점수→절충안)
+  api/deliberate/route.ts   POST 엔드포인트 (입력 검증·레이트리밋·인젝션 방어)
+  components/               증언석·점수판·절충안 등 UI 컴포넌트
+lib/
+  orchestrator.ts           심의 오케스트레이션 (RAG→6증언→절충안→PSS 조립)
+  anthropic.ts              Claude 클라이언트 + Citations 파싱 + 모델 폴백
+  rag.ts                    키워드 가중치 RAG + 갈등지표 추출
+  compromise.ts             8개 절충안 도출 (LLM + 검증 + mock 폴백)
+  legal-rag.ts              법규 규칙 필터
+  stress-score.ts           정책 스트레스 점수 결정론적 계산
+  data-loader.ts            8종 공공데이터 JSON → 인용용 텍스트 변환
+data/                       8종 공공데이터 JSON (출처·datasetId 명시)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+심의 흐름: **RAG 문서 검색 → 실측 갈등지표 추출 → 6 증언자 병렬 호출(또는 데모 mock) → 절충안 도출 → 법규 필터 → PSS 산출 → 응답 조립**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 정직성 원칙
+
+- 미구현 기능을 "운영 중"으로 표현하지 않는다(위 로드맵으로 분리).
+- 데이터는 datasetId·출처·URL을 공개하고, 추정 파생지표는 "데모용 추정"으로 표기한다.
+- 데모 모드(API 키 미설정)는 결과 상단에 명확히 고지한다.
+- PSS는 진단이며 정책 결정을 대신하지 않는다.

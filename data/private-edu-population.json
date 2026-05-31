@@ -1,44 +1,52 @@
 {
   "meta": {
-    "datasetName": "통계청 사교육비·인구추계",
-    "source": "KOSTAT (통계청)",
-    "url": "https://kostat.go.kr/",
-    "datasetId": "KOSTAT-사교육비-2024 / KOSTAT-인구추계-2024",
+    "datasetName": "초중고사교육비조사 (KOSIS) + 장래인구추계",
+    "source": "통계청 (KOSIS)",
+    "url": "https://kostat.go.kr/statDesc.es?act=view&mid=a10501010000&sttr_cd=S012001",
+    "datasetId": "통계청 S012001",
     "updateCycle": "사교육비: 연 1회 (3월 발표) / 인구추계: 5년 주기 (중간 연도 보간)",
-    "lastUpdated": "2025-03-18",
-    "note": "초·중·고 사교육비 실태조사(2024년 기준) + 학령인구 추계(2025~2045). 늘봄학교 의제 핵심 근거."
+    "lastUpdated": "2025-03-13",
+    "note": "통계청 「2024년 초중고사교육비조사 결과」(2025-03 발표, 통계조사 S012001) + 장래인구추계. 늘봄학교 의제 핵심 근거. 학령인구 추계·맞벌이 파생지표는 데모 추정(아래 source_note 참조)."
   },
   "private_education_costs": {
     "survey_year": 2024,
+    "source": "통계청 「2024년 초중고사교육비조사 결과」 (2025-03 발표)",
+    "url": "https://kostat.go.kr/board.es?mid=a10301010000&bid=245&list_no=435485",
     "total_expenditure_trillion_krw": 29.2,
-    "total_expenditure_note": "2023년 27.1조에서 7.7% 증가. 역대 최고치.",
-    "participation_rate_pct": 78.5,
-    "monthly_avg_per_student_krw": 583000,
+    "total_expenditure_note": "사교육비 총액 29조 2,000억원. 2023년 27.1조에서 +7.7% 증가, 역대 최고치 (통계청 공식 발표값).",
+    "participation_rate_pct": 80.0,
+    "participation_rate_note": "전체 참여율 80.0% (통계청 2024 공식 발표값).",
+    "monthly_avg_per_student_krw": 474000,
+    "monthly_avg_note": "전체 학생 1인당 월평균 47.4만원, 참여학생 기준 59.2만원, 주당 7.6시간 (통계청 2024 공식 발표값).",
+    "monthly_avg_participant_krw": 592000,
     "by_school_level": [
       {
         "level": "초등학교",
-        "participation_rate_pct": 85.2,
+        "participation_rate_pct": 87.7,
         "monthly_avg_krw": 424000,
         "monthly_avg_yoy_change_pct": 8.2,
         "top_subject": "영어",
         "top_subject_spending_pct": 28.4,
-        "neulbom_corr_note": "늘봄학교 참여 초등생 사교육비 월평균 38만원 (-10.4%)"
+        "level_source_note": "참여율 87.7%는 통계청 2024 공식 발표값. 월평균액·과목별 비중은 데모 추정.",
+        "neulbom_corr_note": "늘봄학교 참여 초등생 사교육비 월평균 38만원 (-10.4%) — 데모 추정(교육부 늘봄 중간보고 기반)"
       },
       {
         "level": "중학교",
-        "participation_rate_pct": 76.1,
+        "participation_rate_pct": 78.0,
         "monthly_avg_krw": 658000,
         "monthly_avg_yoy_change_pct": 6.5,
         "top_subject": "수학",
-        "top_subject_spending_pct": 32.1
+        "top_subject_spending_pct": 32.1,
+        "level_source_note": "참여율 78.0%는 통계청 2024 공식 발표값. 월평균액·과목별 비중은 데모 추정."
       },
       {
         "level": "고등학교",
-        "participation_rate_pct": 66.4,
+        "participation_rate_pct": 67.3,
         "monthly_avg_krw": 724000,
         "monthly_avg_yoy_change_pct": 4.8,
         "top_subject": "수학",
-        "top_subject_spending_pct": 35.8
+        "top_subject_spending_pct": 35.8,
+        "level_source_note": "참여율 67.3%는 통계청 2024 공식 발표값. 월평균액·과목별 비중은 데모 추정."
       }
     ],
     "by_income_bracket": [
@@ -78,6 +86,8 @@
   },
   "school_age_population": {
     "base_year": 2024,
+    "source": "통계청 장래인구추계(2022~2072) 기반 학령인구(6-17세) 구간 추정",
+    "source_note": "기준연도(2024) 학령인구·합계출산율 방향성은 통계청 장래인구추계 기반. 연도별 세부 분해값·농촌 감소율은 데모용 추정 지표 — 실제 분석 시 통계청 추계 마이크로데이터 필요.",
     "projections": [
       {
         "year": 2024,
@@ -141,6 +151,7 @@
     "after_school_demand_unmet_pct": 34.8,
     "childcare_gap_hours_per_week": 14.2,
     "neulbom_demand_survey_pct": 78.1,
-    "neulbom_demand_note": "맞벌이 가정 78.1%가 늘봄학교 확대 필요 응답 (교육부 설문 2024, 추정)."
+    "derived_note": "after_school_demand_unmet_pct(돌봄 수요 미충족률)·childcare_gap_hours_per_week·neulbom_demand_survey_pct는 PSS 입력용 데모 추정 지표 — 통계청 사교육비조사·통합 마이크로데이터(EDSS)에서 직접 산출 필요. 맞벌이 비율은 통계청 「맞벌이 가구 현황」 방향성 참고.",
+    "neulbom_demand_note": "맞벌이 가정 78.1%가 늘봄학교 확대 필요 응답 — 데모 추정(교육부 늘봄 수요조사 방향성 참고)."
   }
 }

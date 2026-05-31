@@ -44,9 +44,11 @@ export default function CitizenConsensusNote() {
         {/* 설명 + 임계점 게이지 */}
         <div className="min-w-0 flex-1">
           <p className="text-[12.5px] leading-relaxed text-ink/85">
-            Pol.is 알고리즘을 응용한 <strong className="text-navy">시민 합의도</strong>는
-            누적 참여 시민이 임계점에 도달하면 활성화됩니다. 현재는 6인의 증언자 진술만
-            제공되며, 임계점 이전에는 의도적으로 비활성 상태로 둡니다.
+            <strong className="text-navy">시민 합의도</strong>는 향후 도입 예정인
+            확장 기능(로드맵)입니다. Pol.is식 의견 군집(PCA·K-means) 분석은 아직
+            구현되지 않았으며, 누적 참여 시민이 임계점에 도달하면 7번째 시점으로
+            추가할 계획입니다. 현재 화면은 6인의 증언자 진술까지만 실제로 산출하며,
+            이 영역은 의도적으로 비활성(플레이스홀더) 상태로 둡니다.
           </p>
 
           {/* 임계점 진행 */}
@@ -72,7 +74,7 @@ export default function CitizenConsensusNote() {
               <span className="absolute right-0 top-0 h-full w-[2px] bg-red" />
             </div>
             <p className="mt-1.5 text-[10px] text-muted">
-              임계점 도달 시 시민 군집 합의 지도가 7번째 시점으로 추가됩니다.
+              임계점 도달 시 시민 군집 합의 지도를 7번째 시점으로 추가할 예정입니다(미구현).
             </p>
           </div>
         </div>

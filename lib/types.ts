@@ -153,7 +153,9 @@ export interface DeliberateResponse {
   testimonies: Testimony[];
   stressScore: StressScore;
   compromises: Compromise[];
-  documentsUsed: { id: string; title: string; source: string }[];
+  // 증언 근거 공공데이터 출처 — 심사위원이 datasetId·출처기관을 확인하고
+  // data.go.kr 원문으로 이동할 수 있도록 url을 함께 노출한다(데이터 출처 투명성).
+  documentsUsed: { id: string; title: string; source: string; url: string }[];
   isMock: boolean;
   timestamp: string;
 }

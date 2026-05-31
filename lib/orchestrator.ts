@@ -27,8 +27,11 @@ import { legalFilter } from './legal-rag';
 import { computeStressScore } from './stress-score';
 
 // 모델별 출력 토큰 상한 (컨셉 §5: Opus 핵심 4 / Haiku 동적 2)
+// Opus 768: 6명이 병렬 호출되므로 가장 느린 응답이 전체 지연을 결정한다.
+// 증언 1건은 2~4문장(인용 포함)으로 768토큰이면 충분하며, 1024 대비 최장
+// 응답 토큰을 줄여 maxDuration 60초 안에 6병렬이 끝날 여유를 확보한다(타임아웃 폴백 감소).
 const MAX_TOKENS: Record<Witness['model'], number> = {
-  'claude-opus-4-7': 1024,
+  'claude-opus-4-7': 768,
   'claude-haiku-4-5': 512,
 };
 
@@ -209,6 +212,8 @@ export async function deliberate(
       id: d.id,
       title: d.title,
       source: d.source,
+      // url: data.go.kr 등 원문 링크 — UI에서 출처 투명성 확보용(클릭 이동).
+      url: d.url,
     })),
     isMock: USE_MOCK,
     timestamp: new Date().toISOString(),

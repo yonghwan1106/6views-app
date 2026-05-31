@@ -1,12 +1,12 @@
 {
   "meta": {
-    "datasetName": "학교알리미 25개 공시 항목",
-    "source": "KERIS (한국교육학술정보원)",
-    "url": "https://www.schoolinfo.go.kr/",
+    "datasetName": "학교알리미 학교별 공시정보",
+    "source": "KERIS 학교알리미 (data.go.kr)",
+    "url": "https://www.data.go.kr/data/15090212/fileData.do",
     "datasetId": "15090212",
     "updateCycle": "연 1회 (매년 4월 공시)",
     "lastUpdated": "2025-04-30",
-    "note": "초·중등학교 25개 의무 공시 항목. 학생수·교원수·재정·시설·급식·환경 포함."
+    "note": "초·중등학교 의무 공시정보. 학교명·소재지·설립유형은 NEIS Open API/학교알리미 실수집(2025). 학생수·교원수·재정·시설 등 세부 수치는 학교알리미 공시 대표 표본(데모) — 출처: KERIS 학교알리미(data.go.kr 15090212)."
   },
   "records": [
     {
@@ -91,12 +91,14 @@
       "graduation_count_2024": 284
     },
     {
-      "school_code": "4800055",
-      "school_name": "전남고흥남초등학교",
+      "school_code": "8721038",
+      "school_name": "가거도초등학교",
       "sido": "전라남도",
-      "sigungu": "고흥군",
+      "sigungu": "신안군",
+      "address": "전라남도 신안군 흑산면 가거도길 18-31",
       "school_type": "초등학교",
-      "established": "1941",
+      "establishment_type": "공립",
+      "established": "1948",
       "total_students": 42,
       "total_classes": 6,
       "students_per_class_avg": 7.0,
@@ -117,7 +119,9 @@
       "dropout_rate_pct": 0.0,
       "graduation_count_2024": 8,
       "consolidation_risk": "고위험",
-      "consolidation_note": "학생수 60명 미만 통폐합 기준 해당"
+      "consolidation_note": "학생수 60명 미만 통폐합 기준 해당 — 데모 추정. 국토 최서남단 도서벽지 소규모학교.",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721038)·소재지·설립일(1948)은 실데이터(전남 신안군 흑산면 가거도).",
+      "derived_note": "학생수·학급수·교원수·예산·시설·통폐합위험 등 세부 수치는 학교알리미 공시 대표 표본(데모) — 실제 분석 시 학교알리미 공시 원자료 필요."
     },
     {
       "school_code": "4800089",
@@ -178,12 +182,14 @@
       "consolidation_note": "학생수 30명 미만. 교육청 통폐합 심의 대상."
     },
     {
-      "school_code": "6100021",
-      "school_name": "경북울진기성초등학교",
-      "sido": "경상북도",
-      "sigungu": "울진군",
+      "school_code": "7812050",
+      "school_name": "가산초등학교",
+      "sido": "강원특별자치도",
+      "sigungu": "춘천시",
+      "address": "강원특별자치도 춘천시 동면 가산로 52",
       "school_type": "초등학교",
-      "established": "1946",
+      "establishment_type": "공립",
+      "established": "1936",
       "total_students": 34,
       "total_classes": 5,
       "students_per_class_avg": 6.8,
@@ -203,7 +209,9 @@
       "building_age_years": 62,
       "dropout_rate_pct": 0.0,
       "graduation_count_2024": 6,
-      "consolidation_risk": "고위험"
+      "consolidation_risk": "고위험",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(7812050)·소재지·설립일(1936)은 실데이터(강원 춘천시 동면 농어촌).",
+      "derived_note": "학생수·교원수·예산·시설·통폐합위험 등 세부 수치는 학교알리미 공시 대표 표본(데모) — 실제 분석 시 학교알리미 공시 원자료 필요."
     },
     {
       "school_code": "2800101",
@@ -294,7 +302,7 @@
     "elementary": 6175,
     "middle": 3272,
     "high": 2373,
-    "special": 182,
+    "special": 194,
     "avg_students_per_class_elementary": 20.8,
     "avg_students_per_class_middle": 27.3,
     "avg_students_per_class_high": 24.6,
@@ -302,6 +310,9 @@
     "schools_below_100_students": 2910,
     "neulbom_participating_schools_2025": 6236,
     "neulbom_coverage_pct": 52.0,
-    "source_note": "교육부 교육통계연보 2024 + 학교알리미 공시 2025-04 기준. 일부 수치 추정."
+    "source": "교육부 교육통계 / KERIS 학교알리미 (data.go.kr 15090212)",
+    "url": "https://www.data.go.kr/data/15090212/fileData.do",
+    "source_note": "전국 학교 수·학교급별 분포는 교육부 교육통계(2024) 방향성 기준. 학급당 평균·소규모학교 수·늘봄 커버율은 데모용 추정 지표 — 실제 분석 시 학교알리미 공시 전수 원자료 필요.",
+    "sample_note": "records는 전국 약 1.2만 교 중 대표 표본 11교(도서벽지·농어촌·도시 과밀·다문화 밀집 사례 포함)."
   }
 }

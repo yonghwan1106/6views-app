@@ -1,12 +1,12 @@
 {
   "meta": {
     "datasetName": "전국학교학구도연계정보표준데이터",
-    "source": "행정안전부 (data.go.kr)",
+    "source": "교육부 (data.go.kr)",
     "url": "https://www.data.go.kr/data/15021158/standard.do",
     "datasetId": "15021158",
     "updateCycle": "연 1회 (3월 학기 시작 전)",
     "lastUpdated": "2025-02-28",
-    "note": "초등학교 학구(통학 배정 구역) 경계 및 배정 학교 연계 정보. 학구 내 학생수, 면적, 인접 학구 정보 포함."
+    "note": "초등학교 학구(통학 배정 구역) 경계 및 배정 학교 연계 정보. 학교명·학구 연계는 표준데이터 실수집. 통학시간·통학거리·통폐합 통학영향은 표준데이터 미제공 파생지표(데모 추정). 출처: 교육부 전국학교학구도연계정보표준데이터(data.go.kr 15021158)."
   },
   "records": [
     {
@@ -27,25 +27,28 @@
       "notes": "중구 도심 학구. 인구 감소로 학구 내 학령인구 지속 감소 추세."
     },
     {
-      "zone_id": "46770-001",
-      "school_code": "4800055",
-      "school_name": "전남고흥남초등학교",
+      "zone_id": "46900-001",
+      "school_code": "8721038",
+      "school_name": "가거도초등학교",
       "sido": "전라남도",
-      "sigungu": "고흥군",
-      "zone_area_sqkm": 48.3,
+      "sigungu": "신안군",
+      "address": "전라남도 신안군 흑산면 가거도길 18-31",
+      "zone_area_sqkm": 9.18,
       "resident_student_count": 42,
       "assigned_student_count": 42,
       "out_of_zone_students": 0,
-      "adjacent_zones": ["46770-002", "46770-008"],
+      "adjacent_zones": [],
       "commute_avg_min": 22.5,
       "commute_max_min": 45,
       "road_distance_max_km": 14.2,
       "safe_route_exists": false,
-      "notes": "농촌 광역 학구. 통학버스 의존. 통폐합 시 통학거리 최대 25km 증가 예상.",
+      "notes": "국토 최서남단 도서벽지 학구(가거도). 인근 학교 없어 통폐합 시 통학선(여객선) 의존 불가피.",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721038)·소재지는 실데이터(전남 신안군 흑산면 가거도).",
+      "derived_note": "zone_area_sqkm·commute_avg_min·road_distance_max_km·safe_route_exists·consolidation_commute_impact는 표준데이터 미제공 파생지표(데모 추정) — PSS 입력용. 실제 분석 시 학구도 표준데이터+통학 마이크로데이터 필요.",
       "consolidation_commute_impact": {
-        "nearest_school": "전남고흥중앙초등학교",
-        "distance_km": 18.4,
-        "new_commute_avg_min": 38,
+        "nearest_school": "흑산초등학교(흑산도, 여객선 연계)",
+        "distance_km": 44.0,
+        "new_commute_avg_min": 240,
         "bus_required": true
       }
     },
@@ -73,21 +76,24 @@
       }
     },
     {
-      "zone_id": "47930-001",
-      "school_code": "6100021",
-      "school_name": "경북울진기성초등학교",
-      "sido": "경상북도",
-      "sigungu": "울진군",
-      "zone_area_sqkm": 55.7,
+      "zone_id": "51110-001",
+      "school_code": "7812050",
+      "school_name": "가산초등학교",
+      "sido": "강원특별자치도",
+      "sigungu": "춘천시",
+      "address": "강원특별자치도 춘천시 동면 가산로 52",
+      "zone_area_sqkm": 28.4,
       "resident_student_count": 34,
       "assigned_student_count": 34,
       "out_of_zone_students": 0,
-      "adjacent_zones": ["47930-002"],
+      "adjacent_zones": ["51110-002"],
       "commute_avg_min": 19.2,
       "commute_max_min": 41,
       "road_distance_max_km": 16.3,
       "safe_route_exists": false,
-      "notes": "해안 농촌 학구. 고령화로 학령인구 급감 추세."
+      "notes": "강원 춘천시 동면 농어촌 학구. 고령화로 학령인구 감소 추세.",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(7812050)·소재지는 실데이터(강원 춘천시 동면).",
+      "derived_note": "zone_area_sqkm·commute_avg_min·road_distance_max_km·safe_route_exists는 표준데이터 미제공 파생지표(데모 추정) — 실제 분석 시 통학 마이크로데이터 필요."
     },
     {
       "zone_id": "41113-201",
@@ -175,16 +181,17 @@
       "notes": "송도신도시 성장 학구. 학생 수 증가 추세. 과밀 위험."
     },
     {
-      "zone_id": "46770-009",
-      "school_code": "4800012",
-      "school_name": "전남고흥북초등학교 (폐교)",
+      "zone_id": "46900-009",
+      "school_code": "8721039",
+      "school_name": "신안흑산중학교 가거도분교장 (통폐합)",
       "sido": "전라남도",
-      "sigungu": "고흥군",
-      "zone_area_sqkm": 41.2,
+      "sigungu": "신안군",
+      "zone_area_sqkm": 9.18,
       "operation_status": "폐교통합",
       "closed_year": 2023,
-      "merged_into_zone": "46770-001",
-      "notes": "2023년 통폐합 완료. 학구 흡수 후 대체 학교 통학거리 평균 22분 증가."
+      "merged_into_zone": "46900-001",
+      "notes": "도서벽지 분교 통폐합 사례(데모 추정). 가거도 본교 학구로 흡수.",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721039)는 실데이터(전남 신안군 흑산면 가거도 분교장)."
     }
   ],
   "summary": {
@@ -194,7 +201,11 @@
     "zones_with_no_safe_route": 612,
     "avg_commute_urban_min": 10.4,
     "avg_commute_rural_min": 24.8,
-    "zones_requiring_bus": 892,
-    "source_note": "행안부 표준데이터 2025-02 기준. 통학시간·거리 일부 추정."
+    "zones_requiring_bus": 612,
+    "source": "교육부 전국학교학구도연계정보표준데이터 (data.go.kr 15021158)",
+    "url": "https://www.data.go.kr/data/15021158/standard.do",
+    "source_note": "학구 수·인접 학구 연계는 교육부 표준데이터(15021158) 기준. 통학시간·통학거리·안전통학로 부재·통학버스 필요 학구 수는 표준데이터 미제공 파생지표(데모 추정) — 실제 분석 시 통학 마이크로데이터 필요.",
+    "consistency_note": "안전통학로 부재 학구(zones_with_no_safe_route)와 통학버스 필요 학구(zones_requiring_bus)는 동일 정의(612)로 단일화함.",
+    "sample_note": "records는 전국 학구 중 대표 표본 10개(가거도초·가산초 등 NEIS 실수집 도서벽지·농어촌 사례 포함)."
   }
 }

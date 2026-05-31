@@ -1,11 +1,14 @@
 // lib/rag.ts
 // 간이 RAG: 의제별 우선 데이터셋 매핑 + claim 키워드 매칭 점수 → 관련 문서 3-5개 반환.
-// + extractConflictSignals: 공공데이터에서 실측 갈등/수요 지표 추출 (PSS 결정론적 입력).
+// + extractConflictSignals: 공공데이터에서 갈등/수요 지표 추출 (PSS 결정론적 입력).
+//   ※ 지표 산출의 원천 필드 중 일부(청원수·통학시간·통폐합위험 등)는 표준데이터/NEIS
+//     미제공 파생지표로, 각 data/*.json의 derived_note에 "데모용 추정"으로 정직 표기됨.
+//     전국 통계 수치(사교육비·특수교육·다문화 등)는 공식 발표값(출처 병기).
 import 'server-only';
 import type { AgendaId, PublicDataDoc, ConflictSignal } from './types';
 import { loadAllData } from './data-loader';
 
-// 실측 갈등 지표 추출용 원본 JSON 정적 import (data-loader와 동일 소스 — 번들러 dedupe).
+// 갈등 지표 추출용 원본 JSON 정적 import (data-loader와 동일 소스 — 번들러 dedupe).
 import closedSchoolsData from '@/data/closed-schools.json';
 import schoolZoneData from '@/data/school-zone.json';
 import privateEduData from '@/data/private-edu-population.json';
@@ -172,10 +175,12 @@ export function retrieveDocs(agendaId: AgendaId, claim: string): PublicDataDoc[]
   return topN.map(s => s.doc);
 }
 
-// ─── 실측 갈등/수요 지표 추출 ──────────────────────────────────────
-// PSS(정책 스트레스 점수)의 "실데이터 기반" 축을 위한 결정론적 입력.
+// ─── 갈등/수요 지표 추출 ───────────────────────────────────────────
+// PSS(정책 스트레스 점수)의 "데이터 기반" 축을 위한 결정론적 입력.
 // retrieveDocs가 고른 문서에 해당하는 데이터셋에서만 지표를 추출한다
 // (= claim·의제와 관련된 갈등 지표만 반영, 무관 데이터 잡음 차단).
+// 원천 필드 일부는 데모용 추정(각 json derived_note 참조) — 값은 결정론적이나
+// 절대 수치 자체를 "실측"으로 단정하지 않는다.
 
 /** 폐교 사례 community_reaction 문자열 → 반대 여부 (반대·강한반대 = 반대) */
 function isOpposition(reaction: string): boolean {
@@ -183,10 +188,12 @@ function isOpposition(reaction: string): boolean {
 }
 
 /**
- * retrieveDocs 결과에서 실측 갈등/수요 지표(ConflictSignal)를 추출한다.
+ * retrieveDocs 결과에서 갈등/수요 지표(ConflictSignal)를 추출한다.
  *
- * 각 지표는 공공데이터 JSON의 실제 수치에서 산출되는 결정론적 값이다
+ * 각 지표는 공공데이터 JSON의 수치에서 산출되는 결정론적 값이다
  * (동일 입력 → 동일 출력, LLM·난수 미사용).
+ * 단, 청원수·통학시간·통폐합위험 등 일부 원천 필드는 표준데이터/NEIS 미제공
+ * 데모 추정값(각 json derived_note 참조)이므로 절대 수치를 실측으로 단정하지 않는다.
  * 문서가 retrieveDocs에 포함되지 않은 데이터셋의 지표는 undefined로 둔다.
  *
  * @param docs retrieveDocs가 반환한 PublicDataDoc 배열
@@ -196,7 +203,7 @@ export function extractConflictSignals(docs: PublicDataDoc[]): ConflictSignal {
   const ids = new Set(docs.map((d) => d.id));
   const signal: ConflictSignal = { sourceCount: 0 };
 
-  // ── 폐교적교현황: 청원 건수·지역사회 반대 비율 ──
+  // ── 전국폐교재산기본정보(data.go.kr 15107729): 청원 건수·지역사회 반대 비율(데모 추정) ──
   if (ids.has('closed-schools')) {
     const records = closedSchoolsData.records;
     if (records.length > 0) {
@@ -244,7 +251,7 @@ export function extractConflictSignals(docs: PublicDataDoc[]): ConflictSignal {
     signal.sourceCount += 1;
   }
 
-  // ── 특수교육 연차보고서: 지원인력 부족률·행정업무 비중 ──
+  // ── 교육부 특수교육통계(data.go.kr 15051018): 지원인력 부족률·행정업무 비중(데모 추정) ──
   if (ids.has('special-education')) {
     signal.staffShortageRatio = specialEduData.support_staff.shortage_rate_pct / 100;
     signal.adminBurdenRatio =

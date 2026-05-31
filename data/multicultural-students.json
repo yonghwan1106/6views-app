@@ -1,54 +1,61 @@
 {
   "meta": {
-    "datasetName": "경기도교육청 다문화학생 현황",
+    "datasetName": "경기도교육청 다문화학생현황",
     "source": "경기도교육청 (data.go.kr)",
-    "url": "https://www.data.go.kr/data/15106331/fileData.do",
-    "datasetId": "15106331",
+    "url": "https://www.data.go.kr/data/15077326/fileData.do",
+    "datasetId": "15077326",
     "updateCycle": "연 1회 (4월 기준)",
     "lastUpdated": "2025-04-30",
-    "note": "경기도 전체 초·중·고 다문화 학생 현황. 국적별·학교급별·지역별 분포. 한국어 지원·이중언어 프로그램 현황 포함. 다문화·특수교육 포용 의제 핵심."
+    "note": "경기도 전체 초·중·고 다문화 학생 현황(2024). 국적별·학교급별·지역별 분포. 한국어 지원·이중언어 프로그램 현황 포함. 전국 수치는 교육부 「2024 교육기본통계」, 경기 수치는 data.go.kr 15077326."
   },
   "gyeonggi_overview_2025": {
-    "total_multicultural_students": 72841,
+    "data_year": 2024,
+    "source": "경기도교육청 다문화학생현황 (data.go.kr 15077326) + 교육부 「2024 교육기본통계」",
+    "url": "https://www.data.go.kr/data/15077326/fileData.do",
+    "total_multicultural_students": 36411,
+    "total_note": "경기 다문화학생 36,411명 — 전국 최다 (교육부 2024 교육기본통계 공식값).",
     "total_students_gyeonggi": 1482000,
-    "multicultural_ratio_pct": 4.92,
+    "multicultural_ratio_pct": 2.46,
     "yoy_change_pct": 8.4,
-    "yoy_change_note": "2024년 4.54% → 2025년 4.92%. 지속 증가 추세.",
-    "national_multicultural_total_2025": 188421,
-    "national_multicultural_ratio_pct": 3.52
+    "yoy_change_note": "다문화학생 지속 증가 추세 (방향성 참고, 연도별 증가율은 데모 추정).",
+    "national_multicultural_total_2025": 193814,
+    "national_multicultural_ratio_pct": 3.8,
+    "national_note": "전국 다문화학생 193,814명(전체 학생의 3.8%; 초 4.7 / 중 3.6 / 고 2.1%) — 교육부 「2024 교육기본통계」 공식값."
   },
+  "by_nationality_note": "경기 총계 36,411명에 맞춘 국적별 분포. 비율은 다문화 통계 방향성 참고 데모 추정 — 정확한 국적별 분해는 경기도교육청 마이크로데이터 필요.",
   "by_nationality": [
-    { "nationality": "중국(조선족)", "count": 18421, "pct": 25.3 },
-    { "nationality": "베트남", "count": 14882, "pct": 20.4 },
-    { "nationality": "중국(한족)", "count": 9241, "pct": 12.7 },
-    { "nationality": "필리핀", "count": 8124, "pct": 11.2 },
-    { "nationality": "일본", "count": 4821, "pct": 6.6 },
-    { "nationality": "캄보디아", "count": 3244, "pct": 4.5 },
-    { "nationality": "태국", "count": 2841, "pct": 3.9 },
-    { "nationality": "미국", "count": 2124, "pct": 2.9 },
-    { "nationality": "러시아·CIS", "count": 1882, "pct": 2.6 },
-    { "nationality": "기타", "count": 7261, "pct": 10.0 }
+    { "nationality": "중국(조선족)", "count": 9210, "pct": 25.3 },
+    { "nationality": "베트남", "count": 7440, "pct": 20.4 },
+    { "nationality": "중국(한족)", "count": 4620, "pct": 12.7 },
+    { "nationality": "필리핀", "count": 4060, "pct": 11.2 },
+    { "nationality": "일본", "count": 2410, "pct": 6.6 },
+    { "nationality": "캄보디아", "count": 1620, "pct": 4.5 },
+    { "nationality": "태국", "count": 1420, "pct": 3.9 },
+    { "nationality": "미국", "count": 1060, "pct": 2.9 },
+    { "nationality": "러시아·CIS", "count": 940, "pct": 2.6 },
+    { "nationality": "기타", "count": 3631, "pct": 10.0 }
   ],
+  "by_school_level_note": "경기 총계 36,411명에 맞춘 학교급별 분포. 학교급 내 비율(ratio_in_level_pct)은 전국 패턴(초 4.7/중 3.6/고 2.1%) 방향성 참고, korean_support_coverage_pct는 데모 추정.",
   "by_school_level": [
     {
       "level": "초등학교",
-      "count": 42481,
+      "count": 21240,
       "pct": 58.3,
-      "ratio_in_level_pct": 6.8,
+      "ratio_in_level_pct": 4.7,
       "korean_support_coverage_pct": 72.4
     },
     {
       "level": "중학교",
-      "count": 18241,
+      "count": 9120,
       "pct": 25.0,
-      "ratio_in_level_pct": 4.2,
+      "ratio_in_level_pct": 3.6,
       "korean_support_coverage_pct": 58.2
     },
     {
       "level": "고등학교",
-      "count": 12119,
+      "count": 6051,
       "pct": 16.6,
-      "ratio_in_level_pct": 2.8,
+      "ratio_in_level_pct": 2.1,
       "korean_support_coverage_pct": 42.1
     }
   ],
@@ -103,10 +110,11 @@
     "korean_language_teachers": 2841,
     "bilingual_support_teachers": 842,
     "coverage_rate_pct": 68.4,
-    "unmet_demand_students": 22841,
-    "unmet_demand_note": "한국어 지원 미적용 다문화 학생 추정 2만 2천명 (추정, 경기도교육청 수요조사 2024 참고).",
+    "unmet_demand_students": 11400,
+    "unmet_demand_note": "한국어 지원 미적용 다문화 학생 추정 약 1만 1천명(경기 총계 36,411 × 미적용률 기준) — 데모 추정.",
     "avg_weekly_korean_sessions": 6.4,
-    "ideal_weekly_sessions": 10.0
+    "ideal_weekly_sessions": 10.0,
+    "derived_note": "coverage_rate_pct(한국어 지원 커버율)·avg_weekly_korean_sessions는 PSS 입력용 데모 추정 지표 — 실제 분석 시 경기도교육청 한국어교육 운영 마이크로데이터 필요."
   },
   "academic_gap": {
     "multicultural_basic_literacy_below_std_pct": 18.4,
@@ -114,11 +122,13 @@
     "gap_multiplier": 2.97,
     "dropout_rate_multicultural_pct": 2.1,
     "dropout_rate_general_pct": 0.6,
-    "gap_note": "다문화 학생 기초학력 미달 비율이 일반 학생의 약 3배. 한국어 숙달 여부가 핵심 변수."
+    "gap_note": "다문화 학생 기초학력 미달 비율이 일반 학생의 약 3배(방향성). 한국어 숙달 여부가 핵심 변수.",
+    "derived_note": "gap_multiplier(학력격차 배수)·기초학력 미달 비율·학업중단율은 PSS 입력용 데모 추정 지표 — 실제 분석 시 기초학력진단 마이크로데이터 필요."
   },
+  "high_density_schools_note": "고밀집 학교 표본. 안산 원곡동 일대는 외국인 밀집 실지역으로 다문화 학생 비율이 높음. 학교별 정확한 다문화 학생수는 학교알리미 공시 기준이며, 표본 수치는 데모 추정.",
   "neulbom_multicultural": {
     "multicultural_neulbom_participation_pct": 48.2,
     "general_neulbom_participation_pct": 38.4,
-    "note": "다문화 학생 늘봄학교 참여율이 일반 학생보다 9.8%p 높음. 돌봄 사각지대 해소 효과 추정."
+    "note": "다문화 학생 늘봄학교 참여율이 일반 학생보다 높음 — 데모 추정. 돌봄 사각지대 해소 효과 가설."
   }
 }

@@ -1,12 +1,12 @@
 {
   "meta": {
-    "datasetName": "폐교적교현황",
-    "source": "KEDI (한국교육개발원)",
-    "url": "https://www.kedi.re.kr/",
-    "datasetId": "KEDI-폐교현황-2024",
-    "updateCycle": "연 1회 (3월)",
+    "datasetName": "전국폐교재산기본정보표준데이터",
+    "source": "시도교육청 / 지방교육재정알리미 (data.go.kr)",
+    "url": "https://www.data.go.kr/data/15107729/standard.do",
+    "datasetId": "15107729",
+    "updateCycle": "연 1회",
     "lastUpdated": "2025-03-01",
-    "note": "1982년 농어촌 소규모학교 통폐합 정책 시행 이후 폐교 현황. 폐교 활용 현황(매각·임대·공공 전용) 포함."
+    "note": "1982년 농어촌 소규모학교 통폐합 정책 시행 이후 폐교재산 기본정보. 폐교 활용 현황(매각·임대·공공 전용) 포함. 출처: 전국폐교재산기본정보표준데이터(data.go.kr 15107729)."
   },
   "records": [
     {
@@ -26,7 +26,9 @@
       "lat": 34.6144,
       "lng": 127.2501,
       "community_reaction": "반대",
-      "petition_count": 124
+      "petition_count": 124,
+      "record_basis": "전국폐교재산기본정보표준데이터(data.go.kr 15107729) — 폐교명·소재지·설립연도는 표준데이터 기준.",
+      "derived_note": "community_reaction·petition_count는 데모용 추정 지표 — 표준데이터 미제공 필드. 실제 분석 시 해당 시도교육청 마이크로데이터 필요."
     },
     {
       "closed_school_code": "4800201-OLD",
@@ -164,12 +166,12 @@
       "petition_count": 95
     },
     {
-      "closed_school_code": "4800544-OLD",
-      "closed_school_name": "전남신안임자초등학교",
+      "closed_school_code": "8721039",
+      "closed_school_name": "신안흑산중학교 가거도분교장",
       "sido": "전라남도",
       "sigungu": "신안군",
-      "school_type": "초등학교",
-      "founded_year": 1956,
+      "school_type": "중학교",
+      "founded_year": 1982,
       "closed_year": 2023,
       "peak_students": 224,
       "last_students": 7,
@@ -177,11 +179,14 @@
       "facility_area_sqm": 1600,
       "land_area_sqm": 4200,
       "current_use": "미활용",
+      "address": "전라남도 신안군 흑산면 가거도길 18-31",
       "lat": 35.1244,
       "lng": 126.0855,
       "community_reaction": "강한반대",
       "petition_count": 178,
-      "island_school": true
+      "island_school": true,
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721039)·소재지는 실데이터(전남 신안군 흑산면 가거도, 1982 설립). 가거도는 국토 최서남단 도서벽지 소규모학교·분교 실사례.",
+      "derived_note": "closed_year·peak_students·last_students·community_reaction·petition_count는 도서벽지 통폐합 압력을 보여주는 데모용 추정 지표 — 실제 분석 시 전남교육청 마이크로데이터 필요."
     },
     {
       "closed_school_code": "4600155-OLD",
@@ -204,7 +209,8 @@
     }
   ],
   "summary": {
-    "total_closed_since_1982": 3867,
+    "total_closed_since_1982": 1350,
+    "total_closed_note": "전국 폐교재산 약 1,350개 통합 관리(지방교육재정알리미 폐교정보 / 전국폐교재산기본정보표준데이터 data.go.kr 15107729).",
     "closed_2020_2024": 312,
     "closed_2024_alone": 68,
     "projected_closed_2025_2030": 480,
@@ -215,13 +221,17 @@
       "leased_pct": 15.2
     },
     "sido_top3_closures": [
-      { "sido": "전라남도", "count": 684 },
-      { "sido": "경상북도", "count": 521 },
-      { "sido": "강원특별자치도", "count": 412 }
+      { "sido": "전라남도", "count": 839 },
+      { "sido": "경상북도", "count": 729 },
+      { "sido": "강원특별자치도", "count": 482 }
     ],
     "community_opposition_rate_pct": 58.4,
     "island_school_closure_ratio_pct": 12.3,
     "avg_last_students_at_closure": 18.4,
-    "source_note": "KEDI 폐교적교현황 2025-03. 2024년 이후 수치 일부 추정. 지역사회 반응 비율은 KEDI 설문 결과(2024) 참고."
+    "source": "전국폐교재산기본정보표준데이터 (시도교육청/지방교육재정알리미, 2024)",
+    "url": "https://www.data.go.kr/data/15107729/standard.do",
+    "sample_note": "전국 폐교재산 약 1,350개 중 대표 표본 10개. 시도별 폐교 누계는 지방교육재정알리미 폐교현황 기준.",
+    "source_note": "전국 폐교 총계·시도별 누계는 지방교육재정알리미/전국폐교재산기본정보표준데이터(data.go.kr 15107729) 기준. closed_2020_2024·closed_2024_alone·projected_closed_2025_2030·current_use_breakdown 등 파생·세부 추세 수치는 데모용 추정 지표 — 실제 정책분석 시 시도교육청 마이크로데이터 필요.",
+    "derived_note": "community_opposition_rate_pct·island_school_closure_ratio_pct·avg_last_students_at_closure는 표본 10건 기반 데모 추정 — 표준데이터는 폐교명·소재지·재산현황을 제공하며 지역사회 반응·청원수는 미제공."
   }
 }

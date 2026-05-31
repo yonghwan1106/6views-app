@@ -144,7 +144,7 @@ function computeLegalConflictStress(compromises: Compromise[]): number {
 function computeConflictPressure(signal: ConflictSignal): number | null {
   const norms: number[] = [];
 
-  // 폐교 반대 청원: 사례 최대치(진도조도초 215건) 기준 정규화.
+  // 폐교 반대 청원(데모 추정 지표): 표본 청원 강도를 150건 기준으로 정규화.
   if (signal.avgPetitionCount !== undefined) {
     norms.push(clamp01(signal.avgPetitionCount / 150));
   }

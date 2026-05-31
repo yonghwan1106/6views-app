@@ -1,31 +1,37 @@
 {
   "meta": {
-    "datasetName": "특수교육 연차보고서",
+    "datasetName": "교육부 특수교육통계",
     "source": "교육부 (data.go.kr)",
-    "url": "https://www.data.go.kr/data/15106332/fileData.do",
-    "datasetId": "15106332",
-    "updateCycle": "연 1회 (8월 발표)",
+    "url": "https://www.data.go.kr/data/15051018/fileData.do",
+    "datasetId": "15051018",
+    "updateCycle": "연 1회",
     "lastUpdated": "2025-08-01",
-    "note": "장애학생 특수교육 현황. 특수학교·특수학급·일반학급 배치 현황, 지원 인력, 보조공학기기 등 포함. 다문화·특수교육 포용 의제 핵심."
+    "note": "장애학생 특수교육 현황(2024 기준). 특수학교·특수학급·일반학급 배치 현황, 지원 인력, 보조공학기기 등 포함. 다문화·특수교육 포용 의제 핵심. 출처: 교육부 특수교육통계(data.go.kr 15051018)."
   },
   "national_overview_2025": {
-    "total_special_ed_students": 115842,
+    "data_year": 2024,
+    "source": "교육부 특수교육통계 2024 (data.go.kr 15051018)",
+    "url": "https://www.data.go.kr/data/15051018/fileData.do",
+    "total_special_ed_students": 115610,
+    "total_note": "특수교육대상자 115,610명 (교육부 2024 공식값). 2004년 55,374명 → 2024년 115,610명으로 20년간 2배 이상 증가.",
     "yoy_change_pct": 3.2,
     "by_school_type": [
-      { "type": "특수학교", "students": 28144, "schools": 182 },
-      { "type": "일반학교 특수학급", "students": 65481, "schools": 11248 },
-      { "type": "일반학급 완전통합", "students": 22217, "schools": 5842 }
+      { "type": "특수학교", "students": 28100, "schools": 194 },
+      { "type": "일반학교 특수학급", "students": 65310, "schools": 11248 },
+      { "type": "일반학급 완전통합", "students": 22200, "schools": 5842 }
     ],
+    "by_school_type_note": "학교유형별 분해·학교수는 데모 추정 — 합계만 교육부 공식값(115,610). 세부 분해 시 교육부 특수교육통계 마이크로데이터 필요.",
     "disability_types": [
-      { "type": "지적장애", "count": 52841, "pct": 45.6 },
-      { "type": "자폐성장애", "count": 24128, "pct": 20.8 },
-      { "type": "지체장애", "count": 12482, "pct": 10.8 },
-      { "type": "발달지체", "count": 9244, "pct": 8.0 },
-      { "type": "청각장애", "count": 4821, "pct": 4.2 },
-      { "type": "시각장애", "count": 2441, "pct": 2.1 },
-      { "type": "정서·행동장애", "count": 5124, "pct": 4.4 },
-      { "type": "기타", "count": 4761, "pct": 4.1 }
-    ]
+      { "type": "지적장애", "count": 57883, "pct": 50.1 },
+      { "type": "자폐성장애", "count": 20210, "pct": 17.5 },
+      { "type": "지체장애", "count": 9710, "pct": 8.4 },
+      { "type": "발달지체", "count": 11098, "pct": 9.6 },
+      { "type": "청각장애", "count": 3815, "pct": 3.3 },
+      { "type": "시각장애", "count": 1965, "pct": 1.7 },
+      { "type": "정서·행동장애", "count": 4393, "pct": 3.8 },
+      { "type": "기타", "count": 6536, "pct": 5.6 }
+    ],
+    "disability_types_note": "지적장애 57,883명(50.1%)은 교육부 2024 공식값. 나머지 장애유형별 분해는 총계(115,610)에 맞춘 데모 추정 — 세부 시 교육부 특수교육통계 원자료 필요."
   },
   "support_staff": {
     "special_ed_teachers": 22148,
@@ -34,7 +40,8 @@
     "therapists": 3244,
     "speech_language_pathologists": 1882,
     "shortage_rate_pct": 18.4,
-    "shortage_note": "특수교사 법정 정원 대비 18.4% 부족 (추정, 교육부 2025 특수교육 통계)."
+    "shortage_note": "특수교사 법정 정원 대비 18.4% 부족 — PSS 입력용 데모 추정 지표. 정확한 정원 충원율은 교육부 특수교육통계 마이크로데이터 필요.",
+    "derived_note": "special_ed_teachers·assistants·therapists 수치 및 shortage_rate_pct는 데모 추정 — 교육부 특수교육통계(15051018)는 대상자수·배치현황 중심, 정원 대비 부족률은 별도 마이크로데이터 필요."
   },
   "inclusion_classroom_data": [
     {
@@ -98,14 +105,16 @@
     "ai_digital_textbook_pilot_schools": 284,
     "special_ed_aidt_coverage_pct": 12.4,
     "aidt_adaptation_rate_pct": 38.2,
-    "aidt_adaptation_note": "AIDT의 특수교육 대상 맞춤 기능 적용률 38.2%. 비장애학생 대비 기능 격차 존재.",
+    "derived_note": "AIDT 특수교육 적용률·기능 격차는 데모 추정 지표 — 실제 분석 시 교육부 AIDT 운영 마이크로데이터 필요.",
+    "aidt_adaptation_note": "AIDT의 특수교육 대상 맞춤 기능 적용률 38.2%(데모 추정). 비장애학생 대비 기능 격차 존재.",
     "accessible_features": ["화면 확대", "음성 출력", "단순화 UI", "보완대체의사소통(AAC) 연동"],
     "missing_features": ["점자 출력 직접 연동", "수어 영상 자동 생성", "인지 수준별 자동 난이도 조정"]
   },
   "teacher_admin_burden_special_ed": {
     "iep_hours_per_student_per_year": 18.4,
-    "iep_note": "개별화교육계획(IEP) 작성에 학생 1인당 연 18.4시간 소요 (추정, KERIS 교사 행정업무 분석 2024 참고).",
+    "iep_note": "개별화교육계획(IEP) 작성에 학생 1인당 연 18.4시간 소요 — 데모 추정(KERIS 교사 행정업무 분석 방향성 참고).",
     "admin_to_teaching_ratio": 0.42,
-    "admin_ratio_note": "특수교사 업무 중 행정 42%, 직접교육 58%. 일반교사 행정 비율 35% 대비 높음."
+    "admin_ratio_note": "특수교사 업무 중 행정 42%, 직접교육 58% — 데모 추정. 일반교사 행정 비율 35% 대비 높음.",
+    "derived_note": "iep_hours_per_student_per_year·admin_to_teaching_ratio는 PSS 입력용 데모 추정 지표 — 실제 분석 시 교원 업무량 마이크로데이터 필요."
   }
 }

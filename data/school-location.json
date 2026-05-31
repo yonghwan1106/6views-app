@@ -1,12 +1,12 @@
 {
   "meta": {
     "datasetName": "전국초중등학교위치표준데이터",
-    "source": "행정안전부 (data.go.kr)",
+    "source": "교육부 (data.go.kr)",
     "url": "https://www.data.go.kr/data/15021148/standard.do",
     "datasetId": "15021148",
     "updateCycle": "수시 (학교 설립·폐교 발생 시)",
     "lastUpdated": "2025-03-31",
-    "note": "전국 초·중·고·특수학교 좌표(WGS84), 운영상태, 설립유형 포함 표준데이터."
+    "note": "전국 초·중·고·특수학교 위치 표준데이터. 학교명·소재지·설립유형·설립일은 NEIS/표준데이터 실수집(2025). 좌표(위경도)는 NEIS schoolInfo 미제공 필드로 행정구역 기준 대표값(데모). 출처: 교육부 전국초중등학교위치표준데이터(data.go.kr 15021148)."
   },
   "records": [
     {
@@ -27,22 +27,24 @@
       "zip_code": "04630"
     },
     {
-      "school_code": "4800055",
-      "school_name": "전남고흥남초등학교",
+      "school_code": "8721038",
+      "school_name": "가거도초등학교",
       "school_type": "초등학교",
       "establishment_type": "공립",
       "sido_code": "46",
       "sido_name": "전라남도",
-      "sigungu_code": "46770",
-      "sigungu_name": "고흥군",
-      "dong_name": "남양면",
-      "address": "전라남도 고흥군 남양면 남양로 142",
-      "lat": 34.5821,
-      "lng": 127.2845,
+      "sigungu_code": "46900",
+      "sigungu_name": "신안군",
+      "dong_name": "흑산면",
+      "address": "전라남도 신안군 흑산면 가거도길 18-31",
+      "lat": 34.0686,
+      "lng": 125.1185,
       "operation_status": "운영중",
-      "founded_year": 1941,
-      "zip_code": "59541",
-      "consolidation_review": true
+      "founded_year": 1948,
+      "zip_code": "58863",
+      "consolidation_review": true,
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721038)·소재지·설립일(1948)은 실데이터(전남 신안군 흑산면 가거도). 국토 최서남단 도서벽지 소규모학교.",
+      "derived_note": "lat·lng(좌표)는 NEIS 미제공 필드로 가거도 행정구역 기준 대표값(데모). consolidation_review는 데모 추정."
     },
     {
       "school_code": "4800133",
@@ -63,23 +65,25 @@
       "consolidation_review": true
     },
     {
-      "school_code": "4800012",
-      "school_name": "전남고흥북초등학교",
-      "school_type": "초등학교",
+      "school_code": "8721039",
+      "school_name": "신안흑산중학교 가거도분교장",
+      "school_type": "중학교",
       "establishment_type": "공립",
       "sido_code": "46",
       "sido_name": "전라남도",
-      "sigungu_code": "46770",
-      "sigungu_name": "고흥군",
-      "dong_name": "두원면",
-      "address": "전라남도 고흥군 두원면 두원로 55",
-      "lat": 34.6144,
-      "lng": 127.2501,
+      "sigungu_code": "46900",
+      "sigungu_name": "신안군",
+      "dong_name": "흑산면",
+      "address": "전라남도 신안군 흑산면 가거도길 18-31",
+      "lat": 34.0686,
+      "lng": 125.1185,
       "operation_status": "통폐합완료",
-      "founded_year": 1948,
+      "founded_year": 1982,
       "closed_year": 2023,
-      "merged_into": "전남고흥중앙초등학교",
-      "zip_code": "59523"
+      "merged_into": "신안흑산중학교",
+      "zip_code": "58863",
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(8721039)·소재지·설립일(1982)은 실데이터(전남 신안군 흑산면 가거도 분교장).",
+      "derived_note": "operation_status·closed_year·merged_into·좌표는 도서벽지 분교 통폐합 압력을 보여주는 데모 추정 — 실제 분교장 운영현황은 전남교육청 확인 필요."
     },
     {
       "school_code": "4800201",
@@ -101,22 +105,24 @@
       "zip_code": "59555"
     },
     {
-      "school_code": "6100021",
-      "school_name": "경북울진기성초등학교",
+      "school_code": "7812050",
+      "school_name": "가산초등학교",
       "school_type": "초등학교",
       "establishment_type": "공립",
-      "sido_code": "47",
-      "sido_name": "경상북도",
-      "sigungu_code": "47930",
-      "sigungu_name": "울진군",
-      "dong_name": "기성면",
-      "address": "경상북도 울진군 기성면 기성로 88",
-      "lat": 36.8954,
-      "lng": 129.3812,
+      "sido_code": "51",
+      "sido_name": "강원특별자치도",
+      "sigungu_code": "51110",
+      "sigungu_name": "춘천시",
+      "dong_name": "동면",
+      "address": "강원특별자치도 춘천시 동면 가산로 52",
+      "lat": 37.9326,
+      "lng": 127.7896,
       "operation_status": "운영중",
-      "founded_year": 1946,
-      "zip_code": "36315",
-      "consolidation_review": true
+      "founded_year": 1936,
+      "zip_code": "24207",
+      "consolidation_review": true,
+      "record_basis": "NEIS Open API schoolInfo 실수집(2025) — 학교명·학교코드(7812050)·소재지·설립일(1936)은 실데이터(강원 춘천시 동면 농어촌).",
+      "derived_note": "lat·lng(좌표)는 NEIS 미제공 필드로 행정구역 기준 대표값(데모). consolidation_review는 데모 추정."
     },
     {
       "school_code": "4100101",
@@ -189,11 +195,14 @@
   ],
   "summary": {
     "total_operational_schools_2025": 11874,
-    "total_closed_since_1982": 3867,
+    "total_closed_since_1982": 1350,
     "closed_last_5years_2020_2025": 312,
     "rural_schools_below_60_students": 1842,
     "sido_with_highest_closure_rate": "전라남도",
-    "sido_closure_count_jeonnam_since_1982": 684,
-    "source_note": "행안전부 표준데이터 2025-03 기준. 폐교 누적 수치는 KEDI 폐교적교현황 교차 검증. 일부 추정."
+    "sido_closure_count_jeonnam_since_1982": 839,
+    "source": "교육부 전국초중등학교위치표준데이터 (data.go.kr 15021148) + 지방교육재정알리미 폐교현황",
+    "url": "https://www.data.go.kr/data/15021148/standard.do",
+    "source_note": "운영 학교 위치·설립유형은 교육부 표준데이터(15021148) 기준. 폐교 누적(약 1,350개)은 전국폐교재산기본정보표준데이터(15107729)/지방교육재정알리미 교차 기준. 소규모학교 수·최근 5년 폐교 수는 데모 추정 — 실제 분석 시 표준데이터 전수 원자료 필요.",
+    "sample_note": "records는 전국 약 1.2만 교 중 대표 표본 10교(가거도초·가산초 등 NEIS 실수집 도서벽지·농어촌 사례 포함)."
   }
 }

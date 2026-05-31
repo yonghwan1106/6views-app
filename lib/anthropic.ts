@@ -72,7 +72,31 @@ export function parseCitedResponse(message: Anthropic.Message): TestimonySegment
 }
 
 /**
- * Opus 우선 호출, RateLimit/Overload 시 Haiku 폴백.
+ * 폴백 대상 오류인지 판정한다 (Opus → Haiku 자동 강등).
+ *
+ * 라이브 데모/공개검증에서 1차 모델(Opus)이 일시적으로 응답하지 못하는
+ * 4가지 대표 장애를 모두 흡수해, 증언석이 "일시 오류" 메시지로 도배되지 않게 한다.
+ *  - RateLimitError(429): 분당 토큰/요청 한도 초과
+ *  - InternalServerError(5xx): Anthropic 측 일시 과부하·내부 오류
+ *  - APIConnectionTimeoutError: 요청이 SDK 타임아웃 안에 끝나지 못함
+ *  - APIConnectionError: 네트워크 단절·DNS·소켓 등 연결 실패
+ *
+ * 주의(SDK 에러 클래스 실측): 이 버전의 @anthropic-ai/sdk에는 `APITimeoutError`가
+ * 존재하지 않는다. 타임아웃은 `APIConnectionTimeoutError`이며 이는
+ * `APIConnectionError`의 서브클래스다. 따라서 `APIConnectionError` 검사만으로도
+ * 타임아웃이 함께 잡히지만, 의도를 코드에 드러내기 위해 둘 다 명시한다.
+ */
+function isFallbackError(err: unknown): boolean {
+  return (
+    err instanceof Anthropic.RateLimitError ||
+    err instanceof Anthropic.InternalServerError ||
+    err instanceof Anthropic.APIConnectionTimeoutError ||
+    err instanceof Anthropic.APIConnectionError
+  );
+}
+
+/**
+ * Opus 우선 호출, 일시적 장애(레이트리밋·과부하·타임아웃·연결오류) 시 Haiku 폴백.
  * 라이브 데모 발표 안전망 (v3 critic 수술 4).
  */
 export async function callWithFallback(
@@ -86,10 +110,7 @@ export async function callWithFallback(
   try {
     return await anthropic.messages.create({ ...params, model: MODEL_IDS[primary] });
   } catch (err) {
-    if (
-      err instanceof Anthropic.RateLimitError ||
-      err instanceof Anthropic.InternalServerError
-    ) {
+    if (isFallbackError(err)) {
       return anthropic.messages.create({ ...params, model: MODEL_IDS[fallback] });
     }
     throw err;

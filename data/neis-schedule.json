@@ -1,13 +1,13 @@
 {
   "meta": {
-    "datasetName": "NEIS 학사일정 Open API",
-    "source": "교육부 NEIS (https://open.neis.go.kr/)",
-    "url": "https://www.data.go.kr/data/15137088/openapi.do",
+    "datasetName": "NEIS 학사일정 (Open API)",
+    "source": "교육부 NEIS (open.neis.go.kr)",
+    "url": "https://open.neis.go.kr/hub/SchoolSchedule",
     "datasetId": "15137088",
     "updateCycle": "실시간 API (매 학기 학교별 갱신)",
     "lastUpdated": "2025-03-02",
     "apiEndpoint": "https://open.neis.go.kr/hub/SchoolSchedule",
-    "note": "전국 초·중·고 학사일정 Open API 응답 샘플. 수업일수·방학·늘봄 프로그램 일정 분석에 활용."
+    "note": "전국 초·중·고 학사일정 Open API 응답. sample_records의 학교명·일자·행사명은 NEIS 실수집(경기 가곡초 7652009 2025학년도 등). 늘봄 운영일수·돌봄공백·NEIS 입력시간 등 파생지표는 데모 추정. 출처: 교육부 NEIS SchoolSchedule Open API(data.go.kr 15137088)."
   },
   "api_schema": {
     "request_params": {
@@ -32,6 +32,54 @@
   },
   "sample_records": [
     {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "7652009",
+      "SCHUL_NM": "가곡초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250301",
+      "EVENT_NM": "3·1절",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "공휴일(미운영)",
+      "record_basis": "NEIS SchoolSchedule Open API 실수집 — 경기 가곡초(7652009) 2025학년도."
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "7652009",
+      "SCHUL_NM": "가곡초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250303",
+      "EVENT_NM": "대체공휴일",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "공휴일(미운영)",
+      "record_basis": "NEIS SchoolSchedule Open API 실수집 — 경기 가곡초(7652009) 2025학년도."
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "7652009",
+      "SCHUL_NM": "가곡초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250304",
+      "EVENT_NM": "시업식·입학식",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "늘봄학교 운영일",
+      "record_basis": "NEIS SchoolSchedule Open API 실수집 — 경기 가곡초(7652009) 2025학년도. 같은 날 시업식·입학식 등재."
+    },
+    {
+      "ATPT_OFCDC_SC_CODE": "J10",
+      "ATPT_OFCDC_SC_NM": "경기도교육청",
+      "SD_SCHUL_CODE": "7652009",
+      "SCHUL_NM": "가곡초등학교",
+      "AY": "2025",
+      "AA_YMD": "20250308",
+      "EVENT_NM": "토요휴업일",
+      "SCHOOL_CRSE_SC_NM": "초등학교",
+      "neulbom_status": "휴업일",
+      "record_basis": "NEIS SchoolSchedule Open API 실수집 — 경기 가곡초(7652009) 2025학년도."
+    },
+    {
       "ATPT_OFCDC_SC_CODE": "B10",
       "ATPT_OFCDC_SC_NM": "서울특별시교육청",
       "SD_SCHUL_CODE": "7010001",
@@ -40,7 +88,8 @@
       "AA_YMD": "20250303",
       "EVENT_NM": "개학일 (1학기)",
       "SCHOOL_CRSE_SC_NM": "초등학교",
-      "neulbom_status": "늘봄학교 운영일"
+      "neulbom_status": "늘봄학교 운영일",
+      "derived_note": "서울남산초 등 비(非)가곡초 레코드는 학사일정 패턴 예시(데모). neulbom_status는 늘봄 운영 가설."
     },
     {
       "ATPT_OFCDC_SC_CODE": "B10",
@@ -155,7 +204,8 @@
     "total_school_days_avg": 190,
     "neulbom_operating_days_avg": 240,
     "neulbom_vacation_operation_days": 50,
-    "neulbom_vacation_note": "방학 중 늘봄 운영일수 평균 50일 (하·동방학 합산). 맞벌이 가정 공백 해소 핵심 지표."
+    "neulbom_vacation_note": "방학 중 늘봄 운영일수 평균 50일 (하·동방학 합산) — 데모 추정. 맞벌이 가정 공백 해소 핵심 지표.",
+    "source_note": "수업일수(약 190일)는 교육부 학사운영 기준 방향성. 학기·방학 일자는 NEIS 학사일정 실수집 기반. 늘봄 운영일수는 데모 추정."
   },
   "neulbom_schedule_analysis": {
     "neulbom_daily_start_time": "13:00",
@@ -163,12 +213,14 @@
     "neulbom_max_hours_per_day": 7,
     "neulbom_avg_participation_hours": 3.8,
     "care_gap_before_neulbom_hours": 2.5,
-    "care_gap_note": "늘봄 도입 전 하교 후 보호자 귀가까지 평균 2.5시간 공백. 늘봄 도입 후 0.4시간으로 축소(추정)."
+    "derived_note": "늘봄 운영시간·참여시간·돌봄공백은 NEIS 학사일정 API 미제공 파생지표(데모 추정) — 실제 분석 시 늘봄 운영현황 마이크로데이터 필요.",
+    "care_gap_note": "늘봄 도입 전 하교 후 보호자 귀가까지 평균 2.5시간 공백, 늘봄 도입 후 0.4시간으로 축소 — 데모 추정."
   },
   "teacher_admin_schedule": {
     "neis_input_avg_hours_per_week": 4.2,
-    "neis_input_note": "교사 1인당 NEIS 행정 입력 주 평균 4.2시간 소요 (KERIS 교사 행정업무 분석 2024 추정).",
+    "neis_input_note": "교사 1인당 NEIS 행정 입력 주 평균 4.2시간 소요 — 데모 추정(KERIS 교사 행정업무 분석 방향성 참고).",
     "schedule_conflict_incidents_per_year": 1284,
-    "schedule_conflict_note": "전국 연간 학사일정 입력 오류·중복 발생 건수 추정. AI 자동화 도입 시 80% 절감 가능(추정)."
+    "derived_note": "NEIS 입력 시간·학사일정 오류 건수·AI 자동화 절감률은 NEIS API 미제공 파생지표(데모 추정) — 실제 분석 시 교원 업무량 마이크로데이터 필요.",
+    "schedule_conflict_note": "전국 연간 학사일정 입력 오류·중복 발생 건수 데모 추정. AI 자동화 도입 시 절감 가능(가설)."
   }
 }
