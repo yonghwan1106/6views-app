@@ -21,13 +21,22 @@ export const MODEL_IDS: Record<ModelId, string> = {
 
 /**
  * 공공데이터 문서 블록 빌더.
- * citations 활성화 + ephemeral 캐싱(동일 문서 6회 재사용 시 ~80% 비용 절감).
+ * citations 활성화 + (옵션) ephemeral 캐싱.
+ *
+ * ⚠️ Anthropic API 제약: 한 요청에 cache_control breakpoint는 **최대 4개**까지만
+ * 허용된다. 문서마다 cache_control을 붙이면 문서가 5개일 때
+ * "A maximum of 4 blocks with cache_control may be provided. Found 5." 400 오류가
+ * 발생한다. 따라서 기본값은 cache 없음으로 두고, 호출부에서 **마지막 문서 1개**에만
+ * cache:true를 지정해 그 지점까지의 prefix 전체를 단일 breakpoint로 캐시한다.
  */
-export function buildDocumentBlock(doc: {
-  title: string;
-  content: string;
-  source?: string;
-}): Anthropic.Messages.DocumentBlockParam {
+export function buildDocumentBlock(
+  doc: {
+    title: string;
+    content: string;
+    source?: string;
+  },
+  options: { cache?: boolean } = {},
+): Anthropic.Messages.DocumentBlockParam {
   return {
     type: 'document',
     source: {
@@ -38,7 +47,7 @@ export function buildDocumentBlock(doc: {
     title: doc.title,
     ...(doc.source ? { context: `출처: ${doc.source}` } : {}),
     citations: { enabled: true },
-    cache_control: { type: 'ephemeral' },
+    ...(options.cache ? { cache_control: { type: 'ephemeral' as const } } : {}),
   };
 }
 

@@ -151,7 +151,7 @@ export default function Home() {
       <main className="mx-auto w-full max-w-[1180px] flex-1 px-5 py-8 sm:px-8 sm:py-10">
         {/* ===== 인트로 — 청문회 개정 선언 ===== */}
         <section className="mb-10 border-b border-navy/15 pb-9">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)] lg:items-start">
             <div className="max-w-2xl">
               <div className="mb-3 inline-flex items-center gap-2 border border-navy/25 bg-paper px-2.5 py-1">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-red" />
@@ -176,8 +176,19 @@ export default function Home() {
               </p>
             </div>
 
+            <figure className="hearing-panel overflow-hidden" style={{ borderRadius: 2 }}>
+              <img
+                src="/visuals/01_witness_bench.png"
+                alt="6시점 데이터 청문회: 학생, 학부모, 교사, 교육청, 지역주민, 폐교졸업생이 정책 주장을 검증하는 장면"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-navy/15 bg-[#fffdf6] px-3 py-2 text-[11px] leading-relaxed text-muted">
+                6명의 증언자가 하나의 정책 주장을 공공데이터 근거로 동시에 검증합니다.
+              </figcaption>
+            </figure>
+
             {/* 절차 요약 카드 */}
-            <ol className="grid shrink-0 grid-cols-2 gap-2 lg:w-[280px]">
+            <ol className="grid grid-cols-2 gap-2 lg:col-span-2 lg:grid-cols-4">
               {[
                 { n: "01", t: "안건 선택", d: "5대 교육정책 의제" },
                 { n: "02", t: "주장 진술", d: "검증할 정책 주장" },
@@ -202,6 +213,30 @@ export default function Home() {
               ))}
             </ol>
           </div>
+        </section>
+
+        <section className="mb-10 grid gap-4 border-b border-navy/15 pb-9 lg:grid-cols-2">
+          <figure className="hearing-panel overflow-hidden" style={{ borderRadius: 2 }}>
+            <img
+              src="/visuals/02_public_data_matrix.png"
+              alt="8종 교육 공공데이터 결합: 학교코드, 행정동코드, 학구도ID로 6 증언자와 정책 스트레스 점수를 연결"
+              className="aspect-[16/9] w-full object-cover"
+            />
+            <figcaption className="border-t border-navy/15 bg-[#fffdf6] px-3 py-2 text-[11px] leading-relaxed text-muted">
+              학교코드·행정동코드·학구도ID 3개 키로 8종 교육 공공데이터를 결합합니다.
+            </figcaption>
+          </figure>
+
+          <figure className="hearing-panel overflow-hidden" style={{ borderRadius: 2 }}>
+            <img
+              src="/visuals/03_policy_stress_dashboard.png"
+              alt="정책 스트레스 테스트 결과: 68점 중위험, 합의도, 법규충돌, 안정성, 6 증언, 인용 근거, 절충안"
+              className="aspect-[16/9] w-full object-cover"
+            />
+            <figcaption className="border-t border-navy/15 bg-[#fffdf6] px-3 py-2 text-[11px] leading-relaxed text-muted">
+              6 증언과 인용 근거를 정책 스트레스 점수와 절충안으로 압축합니다.
+            </figcaption>
+          </figure>
         </section>
 
         {/* ===== 01. 의제 선택 ===== */}

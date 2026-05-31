@@ -94,8 +94,14 @@ async function callWitness(
   docs: PublicDataDoc[],
 ): Promise<Testimony> {
   // 공공데이터 문서 블록 + 질문을 user 메시지 content로 구성.
-  const documentBlocks = docs.map((d) =>
-    buildDocumentBlock({ title: d.title, content: d.content, source: d.source }),
+  // cache_control은 마지막 문서 1개에만 부착한다 — Anthropic은 요청당
+  // cache_control breakpoint를 최대 4개로 제한하므로(문서 5개면 400 오류),
+  // 마지막 문서에 단일 breakpoint를 두어 그 앞 문서 prefix 전체를 캐시한다.
+  const documentBlocks = docs.map((d, i) =>
+    buildDocumentBlock(
+      { title: d.title, content: d.content, source: d.source },
+      { cache: i === docs.length - 1 },
+    ),
   );
   // 프롬프트 인젝션 방어: claim을 정제 후 삽입 (security 리뷰 [HIGH]).
   const safeClaim = sanitizeClaim(claim).sanitized;

@@ -612,8 +612,10 @@ export async function deriveCompromises(
 
   try {
     const message = await callWithFallback('claude-opus-4-7', 'claude-haiku-4-5', {
-      // max_tokens 1200 — 절충안 8건 JSON에 충분 (performance 리뷰 [P2]).
-      max_tokens: 1200,
+      // max_tokens 3072 — 절충안 8건 JSON(각 100~200자 설명 + witnesses 배열)은
+      // 1200 토큰을 초과해 응답이 잘리고(truncate) JSON.parse가 실패하던 문제 수정.
+      // truncate 시 닫는 괄호가 사라져 전체가 mock 폴백되던 원인.
+      max_tokens: 3072,
       system: SYSTEM_PROMPT,
       messages: [
         {
